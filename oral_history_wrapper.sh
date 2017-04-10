@@ -29,7 +29,7 @@ INPUTDIRECTORY=$2
 OUTPUTDIRECTORY=$3
 SCRATCHDIRECTORY=$4
 RESOURCESDIRECTORY=$5
-TOPIC=$6
+WEBSERVICEDIR=$6
 
 mkdir -p $SCRATCHDIRECTORY $RESOURCESDIRECTORY
 
@@ -54,7 +54,7 @@ echo "Starting..." >> $STATUSFILE
 #Loop over all input files, here we assume they are txt files, adapt to your situation:
 #Invoke your actual system, whatever it may be, adapt accordingly
 
-../scripts/kaldi_recog.sh $INPUTDIRECTORY $SCRATCHDIRECTORY $RESOURCESDIRECTORY $TOPIC $OUTPUTDIRECTORY
+../scripts/kaldi_recog.sh $INPUTDIRECTORY $SCRATCHDIRECTORY $RESOURCESDIRECTORY $OUTPUTDIRECTORY
 
 echo "Done." >> $STATUSFILE
 

@@ -50,11 +50,10 @@ SYSTEM_DESCRIPTION = "This webservice provides you a ctm file with word alignmen
 
 # ================ Server specific configuration for CLAM ===============
 host = os.uname()[1]
-if 'VIRTUAL_ENV' in os.environ and os.path.exists(os.environ['VIRTUAL_ENV'] +'/bin/oral_history'):
+if 'VIRTUAL_ENV' in os.environ:
     # Virtual Environment (LaMachine)
     ROOT = os.environ['VIRTUAL_ENV'] + "/oral_history.clam/"
     PORT = 8802
-    BINDIR = os.environ['VIRTUAL_ENV'] + '/bin/'
 
     if host == 'applejack': #configuration for server in Nijmegen
         HOST = "webservices-lst.science.ru.nl"
@@ -82,16 +81,7 @@ if 'VIRTUAL_ENV' in os.environ and os.path.exists(os.environ['VIRTUAL_ENV'] +'/b
         DIGESTOPAQUE = open(os.environ['CLAM_DIGESTOPAQUEFILE']).read().strip()
         SECRET_KEY = open(os.environ['CLAM_SECRETKEYFILE']).read().strip()
         ADMINS = ['proycon','antalb','wstoop']
-elif os.path.exists('/usr/bin/oral_history') and os.path.exists("/home/vagrant") and os.getuid() == 998:
-    # Virtual Machine (LaMachine)
-    ROOT = "/home/vagrant/oral_history.clam/"
-    PORT = 8802
-    BINDIR = '/usr/bin/'
-elif os.path.exists('/usr/bin/oral_history') and os.getuid() == 0 and os.path.exists('/etc/arch-release'):
-    # Docker (LaMachine)
-    ROOT = "/clamdata/oral_history.clam/"
-    PORT = 8802
-    BINDIR = '/usr/bin/'
+        MAXLOADAVG = 16.0
 elif host == "hostnameofyoursystem":
     #**** adapt hostname and add custom configuration for your system here ****
     raise NotImplementedError
@@ -120,11 +110,11 @@ ADMINS = None #List of usernames that are administrator and can access the admin
 REQUIREMEMORY = 100
 
 #Maximum load average at which processes are still started (first number reported by 'uptime'). Set to 0 to disable this check (not recommended)
-MAXLOADAVG = 10.0
+#MAXLOADAVG = 10.0
 
 #Minimum amount of free diskspace in MB. Set to 0 to disable this check (not recommended)
-DISK = '/dev/sda1' #set this to the disk where ROOT is on
-MINDISKSPACE = 100
+#DISK = '/dev/sda1' #set this to the disk where ROOT is on
+#MINDISKSPACE = 100
 
 #The amount of diskspace a user may use (in MB), this is a soft quota which can be exceeded, but creation of new projects is blocked until usage drops below the quota again
 #USERQUOTA = 100
@@ -168,12 +158,12 @@ PROFILES = [
     Profile(
         InputTemplate('InputWavFile',WaveAudioFormat,"Speech file in the wave format",
             #StaticParameter(id='encoding',name='Encoding',description='The character encoding of the file', value='utf-8'), #note that encoding is required if you work with PlainTextFormat
-            ChoiceParameter(id='topic',name='Topic',description='This recording is about', choices=[('T1','Topic1'),('T2','Topic2'),('T3','Topic3')]),
+            #ChoiceParameter(id='topic',name='Topic',description='This recording is about', choices=[('T1','Topic1'),('T2','Topic2'),('T3','Topic3')]),
             #StringParameter(id='author',name='Author',description="The author's name", maxlength=100),
             #InputSource(id='sampledoc', label="Sample Document", path=ROOT+'/inputsources/sampledoc.txt', metadata=PlainTextFormat(None, encoding='utf-8',language='en')),
             #CharEncodingConverter(id='latin1',label='Convert from Latin-1',charset='iso-8859-1'),
-            MP3toWaveConverter(id='mp3conv',label='Convert from MP3 File using sox'),
-            OggtoWaveConverter(id='oggconv',label='Convert from OGG File using sox'),
+            #MP3toWaveConverter(id='mp3conv',label='Convert from MP3 File using sox'),
+            #OggtoWaveConverter(id='oggconv',label='Convert from OGG File using sox'),
             extension='.wav',
             #filename='filename.txt',
             unique=True #set unique=True if the user may only upload a file for this input template once. Set multi=True if you the user may upload multiple of such files
@@ -212,10 +202,10 @@ PROFILES = [
 #     $PARAMETERS      - List of chosen parameters, using the specified flags
 #
 # COMMAND = WEBSERVICEDIR + "/oral_history_wrapper.sh $DATAFILE $STATUSFILE $OUTPUTDIRECTORY"
-SCRATCHDIRECTORY='./scratch' 
-RESOURCESDIRECTORY=' ./resources' 
+SCRATCHDIRECTORY='/scratch2/www/webservices-lst/test/writable/oral_history/scratch/'
+RESOURCESDIRECTORY=' ./scratch2/www/webservices-lst/test/writable/oral_history/resources/'
 #Or for the shell variant:
-COMMAND = WEBSERVICEDIR + "/oral_history_wrapper.sh $STATUSFILE $INPUTDIRECTORY $OUTPUTDIRECTORY $SCRATCHDIRECTORY $RESOURCESDIRECTORY $TOPIC"
+COMMAND = WEBSERVICEDIR + "/oral_history_wrapper.sh $STATUSFILE $INPUTDIRECTORY $OUTPUTDIRECTORY" + SCRATCHDIRECTORY+" "+RESOURCESDIRECTORY+" "+ WEBSERVICEDIR
 
 #Or if you only use the action paradigm, set COMMAND = None
 
