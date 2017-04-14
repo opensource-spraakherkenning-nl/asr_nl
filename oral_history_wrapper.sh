@@ -28,10 +28,9 @@ STATUSFILE=$1
 INPUTDIRECTORY=$2
 OUTPUTDIRECTORY=$3
 SCRATCHDIRECTORY=$4
-RESOURCESDIRECTORY=$5
-WEBSERVICEDIR=$6
+WEBSERVICEDIR=$5
 
-mkdir -p $SCRATCHDIRECTORY $RESOURCESDIRECTORY
+mkdir -p $SCRATCHDIRECTORY 
 
 #If $PARAMETERS was passed COMMAND= in the service configuration file, the remainder of the arguments are custom parameters for which you either need to do your own parsing, or you pass them directly to your application
 # PARAMETERS=${@:4}
@@ -54,7 +53,7 @@ echo "Starting..." >> $STATUSFILE
 #Loop over all input files, here we assume they are txt files, adapt to your situation:
 #Invoke your actual system, whatever it may be, adapt accordingly
 
-../scripts/kaldi_recog.sh $INPUTDIRECTORY $SCRATCHDIRECTORY $RESOURCESDIRECTORY $OUTPUTDIRECTORY
+$WEBSERVICEDIR/kaldi_recog.sh $INPUTDIRECTORY $SCRATCHDIRECTORY $OUTPUTDIRECTORY
 
 echo "Done." >> $STATUSFILE
 

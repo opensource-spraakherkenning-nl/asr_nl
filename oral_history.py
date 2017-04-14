@@ -82,9 +82,9 @@ if 'VIRTUAL_ENV' in os.environ:
         SECRET_KEY = open(os.environ['CLAM_SECRETKEYFILE']).read().strip()
         ADMINS = ['proycon','antalb','wstoop']
         MAXLOADAVG = 16.0
-elif host == "hostnameofyoursystem":
-    #**** adapt hostname and add custom configuration for your system here ****
-    raise NotImplementedError
+    elif host == "twist":
+        DEBUG = True
+        ROOT = "/vol/tensusers/eyilmaz/OralHistory/webservice/writable/"
 else:
     raise Exception("I don't know where I'm running from! Got " + host)
 
@@ -202,10 +202,9 @@ PROFILES = [
 #     $PARAMETERS      - List of chosen parameters, using the specified flags
 #
 # COMMAND = WEBSERVICEDIR + "/oral_history_wrapper.sh $DATAFILE $STATUSFILE $OUTPUTDIRECTORY"
-SCRATCHDIRECTORY='/scratch2/www/webservices-lst/test/writable/oral_history/scratch/'
-RESOURCESDIRECTORY=' ./scratch2/www/webservices-lst/test/writable/oral_history/resources/'
 #Or for the shell variant:
-COMMAND = WEBSERVICEDIR + "/oral_history_wrapper.sh $STATUSFILE $INPUTDIRECTORY $OUTPUTDIRECTORY" + SCRATCHDIRECTORY+" "+RESOURCESDIRECTORY+" "+ WEBSERVICEDIR
+SCRATCHDIRECTORY=ROOT+'/scratch/'
+COMMAND = WEBSERVICEDIR + "/oral_history_wrapper.sh $STATUSFILE $INPUTDIRECTORY $OUTPUTDIRECTORY "+SCRATCHDIRECTORY+" "+WEBSERVICEDIR
 
 #Or if you only use the action paradigm, set COMMAND = None
 
