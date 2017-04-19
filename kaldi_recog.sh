@@ -3,7 +3,7 @@
 if [[ $(hostname) == "applejack" ]]; then
     KALDI_main=/vol/customopt/kaldi
 elif [[ $(hostname) == "twist" ]]; then
-    KALDI_main=/vol/tensusers/eyilmaz/kaldi
+    KALDI_main=/vol/customopt/kaldi
 else
     echo "Specify KALDI_main!" >&2
     exit 2
@@ -16,7 +16,10 @@ outdir=$3
 cd $KALDI_root
 for inputfile in $inputdir/*.wav; do
   file_id=$(basename "$inputfile" .wav)
-  ./decode.sh $inputfile $scratchdir
-  cp $scratchdir/${file_id}.txt $outdir/${file_id}.txt
+  target_dir=$scratchdir/${file_id}_$(date -d "today" +"%Y%m%d%H%M")
+  mkdir -p $target_dir
+  ./decode.sh $inputfile $target_dir
+  cat $target_dir/${file_id}.txt | cut -d'(' -f 1 > $outdir/${file_id}.txt
+  rm -rf $target_dir
 done
 cd -
