@@ -1,5 +1,5 @@
 import sys
 #sys.path.append("/vol/tensusers/eyilmaz/FAME/webservice/oral_history")
-import fame_align
+import oral_history
 import clam.clamservice
-application = clam.clamservice.run_wsgi(fame_align)
+application = clam.clamservice.run_wsgi(oral_history)
