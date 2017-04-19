@@ -29,6 +29,7 @@ from clam.common.formats import WaveAudioFormat, OggAudioFormat, MP3AudioFormat
 import clam
 import sys
 import os
+from base64 import b64decode as D
 
 REQUIRE_VERSION = 0.99
 
