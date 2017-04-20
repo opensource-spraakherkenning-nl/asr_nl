@@ -16,10 +16,9 @@ outdir=$3
 cd $KALDI_root
 for inputfile in $inputdir/*.wav; do
   file_id=$(basename "$inputfile" .wav)
-  target_dir=$scratchdir/${file_id}_$(date -d "today" +"%Y%m%d%H%M")
+  target_dir=$scratchdir/${file_id}_$(date +"%y_%m_%d_%H_%m_%S")
   mkdir -p $target_dir
   ./decode.sh $inputfile $target_dir
   cat $target_dir/${file_id}.txt | cut -d'(' -f 1 > $outdir/${file_id}.txt
-  rm -rf $target_dir
 done
 cd -
