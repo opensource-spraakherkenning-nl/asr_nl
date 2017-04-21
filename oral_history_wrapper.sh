@@ -53,7 +53,7 @@ echo "Starting..." >> $STATUSFILE
 #Loop over all input files, here we assume they are txt files, adapt to your situation:
 #Invoke your actual system, whatever it may be, adapt accordingly
 
-$WEBSERVICEDIR/kaldi_recog.sh $INPUTDIRECTORY $SCRATCHDIRECTORY $OUTPUTDIRECTORY >&2 $STATUSFILE
+$WEBSERVICEDIR/kaldi_recog.sh $INPUTDIRECTORY $SCRATCHDIRECTORY $OUTPUTDIRECTORY >&2
 
 echo "Done." >> $STATUSFILE
 
