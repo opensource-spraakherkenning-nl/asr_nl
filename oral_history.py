@@ -59,7 +59,7 @@ if 'VIRTUAL_ENV' in os.environ:
     if host == 'applejack': #configuration for server in Nijmegen
         HOST = "webservices-lst.science.ru.nl"
         URLPREFIX = 'oral_history'
-
+        
         if not 'CLAMTEST' in os.environ:
             ROOT = "/scratch2/www/webservices-lst/live/writable/oral_history/"
             if 'CLAMSSL' in os.environ:
@@ -83,6 +83,7 @@ if 'VIRTUAL_ENV' in os.environ:
         SECRET_KEY = open(os.environ['CLAM_SECRETKEYFILE']).read().strip()
         ADMINS = ['proycon','antalb','wstoop']
         MAXLOADAVG = 16.0
+        INTERFACEOPTIONS = "disableliveinput"
     elif host == "twist":
         DEBUG = True
         ROOT = "/vol/tensusers/eyilmaz/OralHistory/webservice/writable/"

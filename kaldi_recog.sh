@@ -20,5 +20,6 @@ for inputfile in $inputdir/*.wav; do
   mkdir -p $target_dir
   ./decode.sh $inputfile $target_dir
   cat $target_dir/${file_id}.txt | cut -d'(' -f 1 > $outdir/${file_id}.txt
+  cp $target_dir/1Best.ctm $outdir/${file_id}.ctm
 done
 cd -
