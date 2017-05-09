@@ -160,7 +160,7 @@ PROFILES = [
     Profile(
         InputTemplate('InputWavFile',WaveAudioFormat,"Speech file in the wave format",
             #StaticParameter(id='encoding',name='Encoding',description='The character encoding of the file', value='utf-8'), #note that encoding is required if you work with PlainTextFormat
-            #ChoiceParameter(id='topic',name='Topic',description='This recording is about', choices=[('T1','Topic1'),('T2','Topic2'),('T3','Topic3')]),
+            ChoiceParameter(id='topic',name='Topic',description='This recording contains ', choices=[('GN','daily conversations'),('OH','oral history interviews')], paramflag='--TOPIC'),
             #StringParameter(id='author',name='Author',description="The author's name", maxlength=100),
             #InputSource(id='sampledoc', label="Sample Document", path=ROOT+'/inputsources/sampledoc.txt', metadata=PlainTextFormat(None, encoding='utf-8',language='en')),
             #CharEncodingConverter(id='latin1',label='Convert from Latin-1',charset='iso-8859-1'),
@@ -206,7 +206,8 @@ PROFILES = [
 # COMMAND = WEBSERVICEDIR + "/oral_history_wrapper.sh $DATAFILE $STATUSFILE $OUTPUTDIRECTORY"
 #Or for the shell variant:
 SCRATCHDIRECTORY=ROOT+'/scratch/'
-COMMAND = WEBSERVICEDIR + "/oral_history_wrapper.sh $STATUSFILE $INPUTDIRECTORY $OUTPUTDIRECTORY "+SCRATCHDIRECTORY+" "+WEBSERVICEDIR
+
+COMMAND = WEBSERVICEDIR + "/oral_history_wrapper.sh $STATUSFILE $INPUTDIRECTORY $OUTPUTDIRECTORY "+SCRATCHDIRECTORY+" "+WEBSERVICEDIR+"  $PARAMETERS"
 
 #Or if you only use the action paradigm, set COMMAND = None
 
