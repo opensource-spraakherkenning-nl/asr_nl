@@ -14,16 +14,19 @@ scratchdir=$2
 outdir=$3
 topic=$4
 
-echo "$topic"
+echo $inputdir
+echo $scratchdir
+echo $outdir
+echo $topic
 
 cd $KALDI_root
 for inputfile in $inputdir/*.wav; do
   file_id=$(basename "$inputfile" .wav)
   target_dir=$scratchdir/${file_id}_$(date +"%y_%m_%d_%H_%m_%S")
   mkdir -p $target_dir
-  if [ "$topic" == "GN" ]; then
+  if [[ "$topic" == "GN" ]]; then
     ./decode.sh $inputfile $target_dir
-  elif [ "$topic" == "OH" ]; then
+  elif [[ "$topic" == "OH" ]]; then
     ./decode_OH.sh $inputfile $target_dir
   fi
   cat $target_dir/${file_id}.txt | cut -d'(' -f 1 > $outdir/${file_id}.txt

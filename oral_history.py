@@ -87,6 +87,7 @@ if 'VIRTUAL_ENV' in os.environ:
     elif host == "twist":
         DEBUG = True
         ROOT = "/vol/tensusers/eyilmaz/OralHistory/webservice/writable/"
+        INTERFACEOPTIONS = "disableliveinput"
 else:
     raise Exception("I don't know where I'm running from! Got " + host)
 
@@ -160,7 +161,6 @@ PROFILES = [
     Profile(
         InputTemplate('InputWavFile',WaveAudioFormat,"Speech file in the wave format",
             #StaticParameter(id='encoding',name='Encoding',description='The character encoding of the file', value='utf-8'), #note that encoding is required if you work with PlainTextFormat
-            ChoiceParameter(id='topic',name='Topic',description='This recording contains ', choices=[('GN','daily conversations'),('OH','oral history interviews')], paramflag='--TOPIC'),
             #StringParameter(id='author',name='Author',description="The author's name", maxlength=100),
             #InputSource(id='sampledoc', label="Sample Document", path=ROOT+'/inputsources/sampledoc.txt', metadata=PlainTextFormat(None, encoding='utf-8',language='en')),
             #CharEncodingConverter(id='latin1',label='Convert from Latin-1',charset='iso-8859-1'),
@@ -207,7 +207,7 @@ PROFILES = [
 #Or for the shell variant:
 SCRATCHDIRECTORY=ROOT+'/scratch/'
 
-COMMAND = WEBSERVICEDIR + "/oral_history_wrapper.sh $STATUSFILE $INPUTDIRECTORY $OUTPUTDIRECTORY "+SCRATCHDIRECTORY+" "+WEBSERVICEDIR+"  $PARAMETERS"
+COMMAND = WEBSERVICEDIR + "/oral_history_wrapper.sh $STATUSFILE $INPUTDIRECTORY $OUTPUTDIRECTORY "+SCRATCHDIRECTORY+" "+WEBSERVICEDIR+" $PARAMETERS"
 
 #Or if you only use the action paradigm, set COMMAND = None
 
@@ -219,6 +219,7 @@ COMMAND = WEBSERVICEDIR + "/oral_history_wrapper.sh $STATUSFILE $INPUTDIRECTORY 
 
 PARAMETERS =  [
     ('Group title', [
+        ChoiceParameter(id='topic',name='Topic',description='This recording contains', choices=[('GN','daily conversations'),('OH','oral history interviews')], paramflag=''),
         #BooleanParameter(id='createlexicon',name='Create Lexicon',description='Generate a separate overall lexicon?'),
         #ChoiceParameter(id='casesensitive',name='Case Sensitivity',description='Enable case sensitive behaviour?', choices=['yes','no'],default='no'),
         #StringParameter(id='author',name='Author',description='Sign output metadata with the specified author name',maxlength=255),

@@ -29,8 +29,7 @@ INPUTDIRECTORY=$2
 OUTPUTDIRECTORY=$3
 SCRATCHDIRECTORY=$4
 WEBSERVICEDIR=$5
-TOPIC=
-
+TOPIC=$6
 mkdir -p $SCRATCHDIRECTORY 
 
 #If $PARAMETERS was passed COMMAND= in the service configuration file, the remainder of the arguments are custom parameters for which you either need to do your own parsing, or you pass them directly to your application
