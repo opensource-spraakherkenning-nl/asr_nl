@@ -47,7 +47,7 @@ SYSTEM_ID = "oral_history"
 SYSTEM_NAME = "Automatic Transcription of Oral History Interviews"
 
 #An informative description for this system (this should be fairly short, about one paragraph, and may not contain HTML)
-SYSTEM_DESCRIPTION = "This webservice provides you a ctm file with word alignments given a Frisian speech recording and its transcription."
+SYSTEM_DESCRIPTION = "This webservice uses automatic speech recognition to provide the transcriptions of oral history recordings spoken in Dutch. For bulk processing and other questions, please contact Henk van den Heuvel at h.vandenheuvel@let.ru.nl"
 
 # ================ Server specific configuration for CLAM ===============
 host = os.uname()[1]
@@ -84,10 +84,12 @@ if 'VIRTUAL_ENV' in os.environ:
         ADMINS = ['proycon','antalb','wstoop']
         MAXLOADAVG = 16.0
         INTERFACEOPTIONS = "disableliveinput"
+#         CUSTOMHTML_INDEX = "For bulk processing and other questions, please contact Henk van den Heuvel at h.vandenheuvel@let.ru.nl"
     elif host == "twist":
         DEBUG = True
         ROOT = "/vol/tensusers/eyilmaz/OralHistory/webservice/writable/"
         INTERFACEOPTIONS = "disableliveinput"
+#         CUSTOMHTML_INDEX = "For bulk processing and other questions, please contact Henk van den Heuvel at h.vandenheuvel@let.ru.nl"
 else:
     raise Exception("I don't know where I'm running from! Got " + host)
 
@@ -159,7 +161,7 @@ STYLE = 'classic'
 
 PROFILES = [
     Profile(
-        InputTemplate('InputWavFile',WaveAudioFormat,"Speech file in the wave format",
+        InputTemplate('InputWavFile',WaveAudioFormat,"Speech file",
             #StaticParameter(id='encoding',name='Encoding',description='The character encoding of the file', value='utf-8'), #note that encoding is required if you work with PlainTextFormat
             #StringParameter(id='author',name='Author',description="The author's name", maxlength=100),
             #InputSource(id='sampledoc', label="Sample Document", path=ROOT+'/inputsources/sampledoc.txt', metadata=PlainTextFormat(None, encoding='utf-8',language='en')),
