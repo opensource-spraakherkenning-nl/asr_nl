@@ -14,11 +14,6 @@ scratchdir=$2
 outdir=$3
 topic=$4
 
-echo $inputdir
-echo $scratchdir
-echo $outdir
-echo $topic
-
 cd $KALDI_root
 for inputfile in $inputdir/*.wav; do
   file_id=$(basename "$inputfile" .wav)
@@ -32,5 +27,6 @@ for inputfile in $inputdir/*.wav; do
   fi
   cat $target_dir/${file_id}.txt | cut -d'(' -f 1 > $outdir/${file_id}.txt
   cp $target_dir/1Best.ctm $outdir/${file_id}.ctm
+  ./scripts/ctm2xml.py $outdir $file_id $scratchdir
 done
 cd -
