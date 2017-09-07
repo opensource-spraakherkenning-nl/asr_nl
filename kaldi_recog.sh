@@ -1,6 +1,8 @@
 #!/bin/bash
 
-if [[ $(hostname) == "applejack" ]]; then
+if [[ $(hostname) == "mlp01" ]]; then
+    KALDI_main=/var/www/lamachine/src/kaldi
+elif [[ $(hostname) == "applejack" ]]; then
     KALDI_main=/vol/customopt/kaldi
 elif [[ $(hostname) == "twist" ]]; then
     KALDI_main=/vol/customopt/kaldi
