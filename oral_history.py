@@ -44,10 +44,10 @@ WEBSERVICEDIR = os.path.dirname(os.path.abspath(__file__)) #directory where this
 #The System ID, a short alphanumeric identifier for internal use only
 SYSTEM_ID = "oral_history"
 #System name, the way the system is presented to the world
-SYSTEM_NAME = "Automatic Transcription of Oral History Interviews"
+SYSTEM_NAME = "Automatic Transcription of Dutch Speech Recordings"
 
 #An informative description for this system (this should be fairly short, about one paragraph, and may not contain HTML)
-SYSTEM_DESCRIPTION = "This webservice uses automatic speech recognition to provide the transcriptions of oral history recordings spoken in Dutch. For bulk processing and other questions, please contact Henk van den Heuvel at h.vandenheuvel@let.ru.nl"
+SYSTEM_DESCRIPTION = "This webservice uses automatic speech recognition to provide the transcriptions of recordings spoken in Dutch. You can upload and process only one file per project. For bulk processing and other questions, please contact Henk van den Heuvel at h.vandenheuvel@let.ru.nl."
 
 # ================ Server specific configuration for CLAM ===============
 host = os.uname()[1]
