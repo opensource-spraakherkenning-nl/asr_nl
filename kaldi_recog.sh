@@ -17,7 +17,7 @@ topic=$4
 cd $KALDI_root
 for inputfile in $inputdir/*.wav; do
   file_id=$(basename "$inputfile" .wav)
-  sox $inputfile -e signed-integer -r 16000 -b 16 $scratchdir/${file_id}.wav
+  sox $inputfile -e signed-integer -c 1 -r 16000 -b 16 $scratchdir/${file_id}.wav
   target_dir=$scratchdir/${file_id}_$(date +"%y_%m_%d_%H_%m_%S")
   mkdir -p $target_dir
   if [[ "$topic" == "GN" ]]; then
