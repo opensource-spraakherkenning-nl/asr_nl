@@ -86,7 +86,7 @@ if 'VIRTUAL_ENV' in os.environ:
         INTERFACEOPTIONS = "disableliveinput"
 #         CUSTOMHTML_INDEX = "For bulk processing and other questions, please contact Henk van den Heuvel at h.vandenheuvel@let.ru.nl"
     elif host == 'mlp01': #configuration for server in Nijmegen
-        HOST = "new.webservices-lst.science.ru.nl"
+        HOST = "webservices-lst.science.ru.nl"
         URLPREFIX = 'oral_history'
 
         if not 'CLAMTEST' in os.environ:
