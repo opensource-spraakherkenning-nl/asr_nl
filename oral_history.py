@@ -190,7 +190,7 @@ STYLE = 'classic'
 
 PROFILES = [
     Profile(
-        InputTemplate('InputWavFile',WaveAudioFormat,"Speech file",
+        InputTemplate('InputWavFile',WaveAudioFormat,"Wav file",
             #StaticParameter(id='encoding',name='Encoding',description='The character encoding of the file', value='utf-8'), #note that encoding is required if you work with PlainTextFormat
             #StringParameter(id='author',name='Author',description="The author's name", maxlength=100),
             #InputSource(id='sampledoc', label="Sample Document", path=ROOT+'/inputsources/sampledoc.txt', metadata=PlainTextFormat(None, encoding='utf-8',language='en')),
@@ -208,7 +208,50 @@ PROFILES = [
             #filename='filename.stats',
             unique=True
         ),
+    ),
+    #------------------------------------------------------------------------------------------------------------------------
+    Profile(
+        InputTemplate('InputMP3File',MP3AudioFormat,"MP3 file",
+            #StaticParameter(id='encoding',name='Encoding',description='The character encoding of the file', value='utf-8'), #note that encoding is required if you work with PlainTextFormat
+            #StringParameter(id='author',name='Author',description="The author's name", maxlength=100),
+            #InputSource(id='sampledoc', label="Sample Document", path=ROOT+'/inputsources/sampledoc.txt', metadata=PlainTextFormat(None, encoding='utf-8',language='en')),
+            #CharEncodingConverter(id='latin1',label='Convert from Latin-1',charset='iso-8859-1'),
+            #MP3toWaveConverter(id='mp3conv',label='Convert from MP3 File using sox'),
+            #OggtoWaveConverter(id='oggconv',label='Convert from OGG File using sox'),
+            extension='.mp3',
+            #filename='filename.txt',
+            unique=True #set unique=True if the user may only upload a file for this input template once. Set multi=True if you the user may upload multiple of such files
+        ),
+        #------------------------------------------------------------------------------------------------------------------------
+        OutputTemplate('Transcription',PlainTextFormat,'Automatic transcription of the input recording',
+            SetMetaField('encoding','ascii'), #note that encoding is required if you work with PlainTextFormat
+            extension='.txt', #set an extension or set a filename:
+            #filename='filename.stats',
+            unique=True
+        ),
+    ),
+    #------------------------------------------------------------------------------------------------------------------------
+    Profile(
+        InputTemplate('InputOggFile',MP3AudioFormat,"Ogg file",
+            #StaticParameter(id='encoding',name='Encoding',description='The character encoding of the file', value='utf-8'), #note that encoding is required if you work with PlainTextFormat
+            #StringParameter(id='author',name='Author',description="The author's name", maxlength=100),
+            #InputSource(id='sampledoc', label="Sample Document", path=ROOT+'/inputsources/sampledoc.txt', metadata=PlainTextFormat(None, encoding='utf-8',language='en')),
+            #CharEncodingConverter(id='latin1',label='Convert from Latin-1',charset='iso-8859-1'),
+            #MP3toWaveConverter(id='mp3conv',label='Convert from MP3 File using sox'),
+            #OggtoWaveConverter(id='oggconv',label='Convert from OGG File using sox'),
+            extension='.ogg',
+            #filename='filename.txt',
+            unique=True #set unique=True if the user may only upload a file for this input template once. Set multi=True if you the user may upload multiple of such files
+        ),
+        #------------------------------------------------------------------------------------------------------------------------
+        OutputTemplate('Transcription',PlainTextFormat,'Automatic transcription of the input recording',
+            SetMetaField('encoding','ascii'), #note that encoding is required if you work with PlainTextFormat
+            extension='.txt', #set an extension or set a filename:
+            #filename='filename.stats',
+            unique=True
+        ),
     )
+
 ]
 
 # ======== COMMAND ===========
