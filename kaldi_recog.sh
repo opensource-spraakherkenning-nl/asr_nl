@@ -28,6 +28,8 @@ for inputfile in $inputdir/*; do
     ./decode.sh $scratchdir/${file_id}.wav $target_dir
   elif [[ "$topic" == "OH" ]]; then
     ./decode_OH.sh $scratchdir/${file_id}.wav $target_dir
+  elif [[ "$topic" == "PR" ]]; then
+    ./decode_PR.sh $scratchdir/${file_id}.wav $target_dir
   fi
   cat $target_dir/${file_id}.txt | cut -d'(' -f 1 > $outdir/${file_id}.txt
   cp $target_dir/1Best.ctm $outdir/${file_id}.ctm
