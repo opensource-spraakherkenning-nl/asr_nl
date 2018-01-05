@@ -199,14 +199,14 @@ PROFILES = [
             #OggtoWaveConverter(id='oggconv',label='Convert from OGG File using sox'),
             extension='.wav',
             #filename='filename.txt',
-            unique=True #set unique=True if the user may only upload a file for this input template once. Set multi=True if you the user may upload multiple of such files
+            multi=True #set unique=True if the user may only upload a file for this input template once. Set multi=True if you the user may upload multiple of such files
         ),
         #------------------------------------------------------------------------------------------------------------------------
         OutputTemplate('Transcription',PlainTextFormat,'Automatic transcription of the input recording',
             SetMetaField('encoding','ascii'), #note that encoding is required if you work with PlainTextFormat
             extension='.txt', #set an extension or set a filename:
             #filename='filename.stats',
-            unique=True
+            multi=True
         ),
     ),
     #------------------------------------------------------------------------------------------------------------------------
@@ -220,14 +220,14 @@ PROFILES = [
             #OggtoWaveConverter(id='oggconv',label='Convert from OGG File using sox'),
             extension='.mp3',
             #filename='filename.txt',
-            unique=True #set unique=True if the user may only upload a file for this input template once. Set multi=True if you the user may upload multiple of such files
+            multi=True #set unique=True if the user may only upload a file for this input template once. Set multi=True if you the user may upload multiple of such files
         ),
         #------------------------------------------------------------------------------------------------------------------------
         OutputTemplate('Transcription',PlainTextFormat,'Automatic transcription of the input recording',
             SetMetaField('encoding','ascii'), #note that encoding is required if you work with PlainTextFormat
             extension='.txt', #set an extension or set a filename:
             #filename='filename.stats',
-            unique=True
+            multi=True
         ),
     ),
     #------------------------------------------------------------------------------------------------------------------------
@@ -241,14 +241,14 @@ PROFILES = [
             #OggtoWaveConverter(id='oggconv',label='Convert from OGG File using sox'),
             extension='.ogg',
             #filename='filename.txt',
-            unique=True #set unique=True if the user may only upload a file for this input template once. Set multi=True if you the user may upload multiple of such files
+            multi=True #set unique=True if the user may only upload a file for this input template once. Set multi=True if you the user may upload multiple of such files
         ),
         #------------------------------------------------------------------------------------------------------------------------
         OutputTemplate('Transcription',PlainTextFormat,'Automatic transcription of the input recording',
             SetMetaField('encoding','ascii'), #note that encoding is required if you work with PlainTextFormat
             extension='.txt', #set an extension or set a filename:
             #filename='filename.stats',
-            unique=True
+            multi=True
         ),
     )
 
