@@ -232,7 +232,7 @@ PROFILES = [
     ),
     #------------------------------------------------------------------------------------------------------------------------
     Profile(
-        InputTemplate('InputOggFile',MP3AudioFormat,"Ogg file",
+        InputTemplate('InputOggFile',OggAudioFormat,"Ogg file",
             #StaticParameter(id='encoding',name='Encoding',description='The character encoding of the file', value='utf-8'), #note that encoding is required if you work with PlainTextFormat
             #StringParameter(id='author',name='Author',description="The author's name", maxlength=100),
             #InputSource(id='sampledoc', label="Sample Document", path=ROOT+'/inputsources/sampledoc.txt', metadata=PlainTextFormat(None, encoding='utf-8',language='en')),
