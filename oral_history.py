@@ -114,7 +114,7 @@ if 'VIRTUAL_ENV' in os.environ:
         MAXLOADAVG = 16.0
         INTERFACEOPTIONS = "disableliveinput"
 #         CUSTOMHTML_INDEX = "For bulk processing and other questions, please contact Henk van den Heuvel at h.vandenheuvel@let.ru.nl"
-    elif host == "twist":
+    elif host == "mlp11":
         DEBUG = True
         ROOT = "/vol/tensusers/eyilmaz/OralHistory/webservice/writable/"
         INTERFACEOPTIONS = "disableliveinput"
