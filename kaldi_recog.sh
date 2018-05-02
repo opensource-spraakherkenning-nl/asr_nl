@@ -43,7 +43,7 @@ for inputfile in $inputdir/*; do
   cat $spkr_seg | sed -n '/;;/!p' | sort -nk3 | awk '{printf "SPEAKER %s %s %.2f %.2f <NA> <NA> %s <NA>\n", $1, $2, ($3 / 100), ($4 / 100), $8}' > $outdir/${file_id}.rttm
 
   # Create .ctm with speaker ids
-  ./scripts/ctm2xml.py $outdir/${file_id}.rttm $outdir/${file_id}.ctm
+  ./scripts/addspkctm.py $outdir/${file_id}.rttm $outdir/${file_id}.ctm
 
   # Add sentence boundaries
   cat $outdir/${file_id}.ctm | perl scripts/wordpausestatistic.perl 1.0 $outdir/${file_id}.sent
