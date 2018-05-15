@@ -1,22 +1,12 @@
 #!/bin/bash
 
-if [[ $(hostname) == "mlp01" ]]; then
-    KALDI_main=/var/www/lamachine/src/kaldi
-elif [[ $(hostname) == "applejack" ]]; then
-    KALDI_main=/vol/customopt/kaldi
-elif [[ $(hostname) == "mlp11" ]]; then
-    KALDI_main=/vol/customopt/kaldi
-else
-    echo "Specify KALDI_main!" >&2
-    exit 2
-fi
-KALDI_root=$KALDI_main/egs/Kaldi_NL
 inputdir=$1
 scratchdir=$2
 outdir=$3
-topic=$4
+resourcedir=$4
+topic=$5
 
-cd $KALDI_root
+cd $resourcedir
 for inputfile in $inputdir/*; do
 
   filename=$(basename "$inputfile")
