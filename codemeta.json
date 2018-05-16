@@ -1,0 +1,64 @@
+{
+    "@context": [
+        "https://doi.org/10.5063/schema/codemeta-2.0",
+        "http://schema.org",
+        {
+            "entryPoints": { "@reverse": "schema:actionApplication" },
+            "interfaceType": { "@id": "codemeta:interfaceType" }
+        }
+    ],
+    "@type": "SoftwareSourceCode",
+    "identifier": "oralhistory",
+    "name": "Automatic Transcription of Oral History Interviews",
+    "version": "0.1",
+    "description": "Automatic Transcription of Oral History Interviews",
+    "license": "unknown",
+	"url": "https://languagemachines.github.io/frog",
+    "producer": {
+        "@id": "https://www.ru.nl/clst",
+        "@type": "Organization",
+        "name": "Centre for Language and Speech Technology",
+        "url": "https://www.ru.nl/clst",
+        "parentOrganization": {
+            "@id": "https://www.ru.nl/cls",
+            "@type": "Organization",
+            "name": "Centre for Language Studies",
+            "url": "https://www.ru.nl/cls",
+            "parentOrganization": {
+                "@id": "https://www.ru.nl",
+                "name": "Radboud University",
+                "@type": "Organization",
+                "url": "https://www.ru.nl",
+                "location": {
+                    "@type": "Place",
+                    "name": "Nijmegen"
+                }
+            }
+
+        }
+    },
+    "author": [
+		{
+			"@type": "Person",
+			"givenName": "Emre",
+			"familyName": "Yilmaz",
+			"email": "emre.yilmaz@let.ru.nl",
+			"affiliation": { "@id": "https://www.ru.nl/clst" }
+		}
+	],
+	"sourceOrganization": { "@id": "https://www.ru.nl/clst" },
+	"operatingSystem": "POSIX",
+	"codeRepository": "https://github.com/schemreier/oralhistory",
+    "softwareRequirements": [
+        {
+			"@type": "SoftwareApplication",
+			"identifier": "kaldi",
+			"name": "kaldi"
+		}
+	],
+	"readme": "https://github.com/schemreier/oralhistory/blob/master/README.md",
+	"issueTracker": "https://github.com/schemreier/oralhistory/issues",
+	"developmentStatus": "active",
+	"keywords":  [ "nlp", "speech recognition", "dutch" ],
+	"dateCreated": "2017-04-02"
+}
