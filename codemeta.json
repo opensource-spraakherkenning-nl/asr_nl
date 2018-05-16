@@ -13,7 +13,7 @@
     "version": "0.1",
     "description": "Automatic Transcription of Oral History Interviews",
     "license": "unknown",
-	"url": "https://languagemachines.github.io/frog",
+	"url": "https://github.com/schemreier/oralhistory",
     "producer": {
         "@id": "https://www.ru.nl/clst",
         "@type": "Organization",
