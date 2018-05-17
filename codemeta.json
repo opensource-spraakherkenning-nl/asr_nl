@@ -41,7 +41,7 @@
 		{
 			"@type": "Person",
 			"givenName": "Emre",
-			"familyName": "Yilmaz",
+			"familyName": "Yılmaz",
 			"email": "emre.yilmaz@let.ru.nl",
 			"affiliation": { "@id": "https://www.ru.nl/clst" }
 		}
