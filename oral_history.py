@@ -105,6 +105,11 @@ STYLE = 'classic'
 
 # CUSTOM_FORMATS = [ MyXMLFormat ]
 
+class CTMFormat(CLAMMetaData):
+    attributes = {}
+    name = "Conversation Time Marked File"
+    mimetype = "text/plain"
+
 # ======= INTERFACE OPTIONS ===========
 
 #Here you can specify additional interface options (space separated list), see the documentation for all allowed options
@@ -119,6 +124,7 @@ STYLE = 'classic'
 # ======== PROFILE DEFINITIONS ===========
 
 #Define your profiles here. This is required for the project paradigm, but can be set to an empty list if you only use the action paradigm.
+
 
 PROFILES = [
     Profile(
@@ -140,6 +146,18 @@ PROFILES = [
             #filename='filename.stats',
             multi=True
         ),
+        OutputTemplate('TranscriptionCTM',CTMFormat,'Automatic transcription of the input recording with timestamps (CTM)',
+            SetMetaField('encoding','ascii'), #note that encoding is required if you work with PlainTextFormat
+            extension='.ctm', #set an extension or set a filename:
+            #filename='filename.stats',
+            multi=True
+        ),
+        OutputTemplate('TranscriptionXML', XMLFormat,'Automatic transcription of the input recording (full data) (AudioDoc XML)',
+            SetMetaField('encoding','ascii'), #note that encoding is required if you work with PlainTextFormat
+            extension='.ctm', #set an extension or set a filename:
+            #filename='filename.stats',
+            multi=True
+        )
     ),
     #------------------------------------------------------------------------------------------------------------------------
     Profile(
@@ -161,6 +179,18 @@ PROFILES = [
             #filename='filename.stats',
             multi=True
         ),
+        OutputTemplate('TranscriptionCTM',CTMFormat,'Automatic transcription of the input recording with timestamps (CTM)',
+            SetMetaField('encoding','ascii'), #note that encoding is required if you work with PlainTextFormat
+            extension='.ctm', #set an extension or set a filename:
+            #filename='filename.stats',
+            multi=True
+        ),
+        OutputTemplate('TranscriptionXML', XMLFormat,'Automatic transcription of the input recording (full data) (AudioDoc XML)',
+            SetMetaField('encoding','ascii'), #note that encoding is required if you work with PlainTextFormat
+            extension='.xml', #set an extension or set a filename:
+            #filename='filename.stats',
+            multi=True
+        )
     ),
     #------------------------------------------------------------------------------------------------------------------------
     Profile(
@@ -179,9 +209,18 @@ PROFILES = [
         OutputTemplate('Transcription',PlainTextFormat,'Automatic transcription of the input recording',
             SetMetaField('encoding','ascii'), #note that encoding is required if you work with PlainTextFormat
             extension='.txt', #set an extension or set a filename:
-            #filename='filename.stats',
             multi=True
         ),
+        OutputTemplate('TranscriptionCTM',CTMFormat,'Automatic transcription of the input recording with timestamps (CTM)',
+            SetMetaField('encoding','ascii'), #note that encoding is required if you work with PlainTextFormat
+            extension='.ctm', #set an extension or set a filename:
+            multi=True
+        ),
+        OutputTemplate('TranscriptionXML', XMLFormat,'Automatic transcription of the input recording (full data) (AudioDoc XML)',
+            SetMetaField('encoding','ascii'), #note that encoding is required if you work with PlainTextFormat
+            extension='.xml', #set an extension or set a filename:
+            multi=True
+        )
     )
 
 ]
