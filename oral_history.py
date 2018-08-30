@@ -154,7 +154,7 @@ PROFILES = [
         ),
         OutputTemplate('TranscriptionXML', XMLFormat,'Automatic transcription of the input recording (full data) (AudioDoc XML)',
             SetMetaField('encoding','ascii'), #note that encoding is required if you work with PlainTextFormat
-            extension='.ctm', #set an extension or set a filename:
+            extension='.xml', #set an extension or set a filename:
             #filename='filename.stats',
             multi=True
         )
