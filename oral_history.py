@@ -103,12 +103,13 @@ STYLE = 'classic'
 #    name = "My XML format"
 #    mimetype = 'text/xml'
 
-# CUSTOM_FORMATS = [ MyXMLFormat ]
 
 class CTMFormat(CLAMMetaData):
     attributes = {}
     name = "Conversation Time Marked File"
     mimetype = "text/plain"
+
+CUSTOM_FORMATS = [ CTMFormat ]
 
 # ======= INTERFACE OPTIONS ===========
 
