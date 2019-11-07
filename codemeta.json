@@ -9,9 +9,9 @@
     ],
     "@type": "SoftwareSourceCode",
     "identifier": "oralhistory",
-    "name": "Automatic Transcription of Oral History Interviews",
+    "name": "Automatic Transcription of Dutch Speech Recordings",
     "version": "0.1",
-    "description": "Automatic Transcription of Oral History Interviews",
+    "description": "Automatic Transcription of Dutch Speech Recordings",
     "license": "unknown",
 	"url": "https://github.com/schemreier/oralhistory",
     "producer": {
