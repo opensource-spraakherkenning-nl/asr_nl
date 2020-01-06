@@ -152,19 +152,22 @@ PROFILES = [
         ),
         #------------------------------------------------------------------------------------------------------------------------
         OutputTemplate('Transcription',PlainTextFormat,'Automatic transcription of the input recording',
-            SetMetaField('encoding','ascii'), #note that encoding is required if you work with PlainTextFormat
+            SetMetaField('encoding','utf-8'), #note that encoding is required if you work with PlainTextFormat
+            removeextension=".wav",
             extension='.txt', #set an extension or set a filename:
             #filename='filename.stats',
             multi=True
         ),
         OutputTemplate('TranscriptionCTM',CTMFormat,'Automatic transcription of the input recording with timestamps (CTM)',
-            SetMetaField('encoding','ascii'), #note that encoding is required if you work with PlainTextFormat
+            SetMetaField('encoding','utf-8'), #note that encoding is required if you work with PlainTextFormat
+            removeextension=".wav",
             extension='.ctm', #set an extension or set a filename:
             #filename='filename.stats',
             multi=True
         ),
         OutputTemplate('TranscriptionXML', XMLFormat,'Automatic transcription of the input recording (full data) (AudioDoc XML)',
-            SetMetaField('encoding','ascii'), #note that encoding is required if you work with PlainTextFormat
+            SetMetaField('encoding','utf-8'), #note that encoding is required if you work with PlainTextFormat
+            removeextension=".wav",
             extension='.xml', #set an extension or set a filename:
             #filename='filename.stats',
             multi=True
@@ -185,19 +188,22 @@ PROFILES = [
         ),
         #------------------------------------------------------------------------------------------------------------------------
         OutputTemplate('Transcription',PlainTextFormat,'Automatic transcription of the input recording',
-            SetMetaField('encoding','ascii'), #note that encoding is required if you work with PlainTextFormat
+            SetMetaField('encoding','utf-8'), #note that encoding is required if you work with PlainTextFormat
+            removeextension=".mp3",
             extension='.txt', #set an extension or set a filename:
             #filename='filename.stats',
             multi=True
         ),
         OutputTemplate('TranscriptionCTM',CTMFormat,'Automatic transcription of the input recording with timestamps (CTM)',
-            SetMetaField('encoding','ascii'), #note that encoding is required if you work with PlainTextFormat
+            SetMetaField('encoding','utf-8'), #note that encoding is required if you work with PlainTextFormat
+            removeextension=".mp3",
             extension='.ctm', #set an extension or set a filename:
             #filename='filename.stats',
             multi=True
         ),
         OutputTemplate('TranscriptionXML', XMLFormat,'Automatic transcription of the input recording (full data) (AudioDoc XML)',
-            SetMetaField('encoding','ascii'), #note that encoding is required if you work with PlainTextFormat
+            SetMetaField('encoding','utf-8'), #note that encoding is required if you work with PlainTextFormat
+            removeextension=".mp3",
             extension='.xml', #set an extension or set a filename:
             #filename='filename.stats',
             multi=True
@@ -218,17 +224,20 @@ PROFILES = [
         ),
         #------------------------------------------------------------------------------------------------------------------------
         OutputTemplate('Transcription',PlainTextFormat,'Automatic transcription of the input recording',
-            SetMetaField('encoding','ascii'), #note that encoding is required if you work with PlainTextFormat
+            SetMetaField('encoding','utf-8'), #note that encoding is required if you work with PlainTextFormat
+            removeextension=".ogg",
             extension='.txt', #set an extension or set a filename:
             multi=True
         ),
         OutputTemplate('TranscriptionCTM',CTMFormat,'Automatic transcription of the input recording with timestamps (CTM)',
-            SetMetaField('encoding','ascii'), #note that encoding is required if you work with PlainTextFormat
+            SetMetaField('encoding','utf-8'), #note that encoding is required if you work with PlainTextFormat
+            removeextension=".ogg",
             extension='.ctm', #set an extension or set a filename:
             multi=True
         ),
         OutputTemplate('TranscriptionXML', XMLFormat,'Automatic transcription of the input recording (full data) (AudioDoc XML)',
-            SetMetaField('encoding','ascii'), #note that encoding is required if you work with PlainTextFormat
+            SetMetaField('encoding','utf-8'), #note that encoding is required if you work with PlainTextFormat
+            removeextension=".ogg",
             extension='.xml', #set an extension or set a filename:
             multi=True
         )
