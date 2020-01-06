@@ -20,9 +20,15 @@ fatalerror() {
     echo "-----------------------------------------------------------------------" >&2
     rm $scratchdir/${file_id}.wav 2>/dev/null
     if [ ! -z "$target_dir" ]; then
-        echo "[Index of $target_dir" >&2
+        echo "[Index of $target_dir]" >&2
         du -ah $target_dir >&2
-        echo "[End of index]"
+        echo "[End of index]">&2
+        echo "[Output of intermediate log]" >&2
+        cat $target_dir/intermediate/log >&2
+        echo "[End output of intermediate log]">&2
+        echo "[Output of kaldi decode logs]" >&2
+        cat $target_dir/intermediate/decode/decode*log >&2
+        echo "[End of kaldi decode logs]" >&2
         if [ ! -z "$debug" ]; then
             echo "(cleaning intermediate files after error)">&2
             rm -Rf $target_dir
