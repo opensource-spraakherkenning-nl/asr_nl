@@ -12,7 +12,7 @@ def read(fname):
 
 setup(
     name = "oralhistory",
-    version = "0.2",
+    version = "0.2", #also adapt in oral_history.py and codemeta.json
     author = "Emre Yilmaz, Maarten van Gompel",
     author_email = "",
     description = ("Dutch Automatic Speech Recognition Webservice"),
@@ -33,5 +33,5 @@ setup(
     ],
     package_data = {'oralhistory':['*.sh','*.wsgi','*.yml'] },
     include_package_data=True,
-    install_requires=['CLAM >= 2.3']
+    install_requires=['CLAM >= 3.0']
 )
