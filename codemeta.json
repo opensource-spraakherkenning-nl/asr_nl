@@ -44,6 +44,13 @@
 			"familyName": "Yılmaz",
 			"email": "emre.yilmaz@let.ru.nl",
 			"affiliation": { "@id": "https://www.ru.nl/clst" }
+		},
+		{
+			"@type": "Person",
+			"givenName": "Maarten",
+			"familyName": "van Gompel",
+			"email": "proycon@anaproy.nl",
+			"affiliation": { "@id": "https://www.ru.nl/clst" }
 		}
 	],
 	"sourceOrganization": { "@id": "https://www.ru.nl/clst" },
