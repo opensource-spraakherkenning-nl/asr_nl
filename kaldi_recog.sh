@@ -29,7 +29,7 @@ for inputfile in $inputdir/*; do
   mkdir -p $target_dir
 
   if [[ "$topic" == "GN" ]]; then
-    ./decode.sh $scratchdir/${file_id}.wav $target_dir || fatalerror "Decoding failed (GN)"
+    ./decode_GN.sh $scratchdir/${file_id}.wav $target_dir || fatalerror "Decoding failed (GN)"
   elif [[ "$topic" == "OH" ]]; then
     ./decode_OH.sh $scratchdir/${file_id}.wav $target_dir || fatalerror "Decoding failed (OH)"
   elif [[ "$topic" == "PR" ]]; then
