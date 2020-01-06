@@ -39,8 +39,12 @@ for inputfile in $inputdir/*; do
     ./decode_PR.sh $scratchdir/${file_id}.wav $target_dir || fatalerror "Decoding failed (PR)"
   fi
 
-  if [ -f $target_dir/${file_id}.txt ]; then
-      fatalerror "Expected target file $target_dir/${file_id}.txt not found!"
+  if [ ! -f $target_dir/${file_id}.txt ]; then
+      fatalerror "Expected target file $target_dir/${file_id}.txt not found after decoding!"
+  fi
+
+  if [ ! -f $target_dir/1Best.ctm ]; then
+      fatalerror "Expected CTM file $target_dir/1Best.ctm not found after decoding!"
   fi
 
   cat $target_dir/${file_id}.txt | cut -d'(' -f 1 > $outdir/${file_id}.txt
