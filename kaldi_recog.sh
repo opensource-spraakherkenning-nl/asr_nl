@@ -4,6 +4,9 @@
 fatalerror() {
     echo "$*" >&2
     rm $scratchdir/${file_id}.wav 2>/dev/null
+    if [ ! -z "$target_dir"]; then
+        rm -Rf $target_dir
+    fi
     exit 2
 }
 
@@ -26,7 +29,7 @@ for inputfile in $inputdir/*; do
   file_id=$(basename "$inputfile" .$extension)
   sox $inputfile -e signed-integer -c 1 -r 16000 -b 16 $scratchdir/${file_id}.wav || fatalerror "Failure calling sox"
   target_dir=$scratchdir/${file_id}_$(date +"%y_%m_%d_%H_%m_%S")
-  mkdir -p $target_dir
+  mkdir -p $target_dir || fatalerror "Unable to create temporary working directory $target_dir"
 
   if [[ "$topic" == "GN" ]]; then
     ./decode_GN.sh $scratchdir/${file_id}.wav $target_dir || fatalerror "Decoding failed (GN)"
@@ -56,6 +59,7 @@ for inputfile in $inputdir/*; do
 
   #cleanup
   rm $scratchdir/${file_id}.wav 2>/dev/null
+  rm -Rf $target_dir
 
 done
 cd -
