@@ -23,7 +23,8 @@ fatalerror() {
         echo "[Index of $target_dir" >&2
         du -ah $target_dir >&2
         echo "[End of index]"
-        if [ -z "$debug" ]; then
+        if [ ! -z "$debug" ]; then
+            echo "(cleaning intermediate files after error)">&2
             rm -Rf $target_dir
         fi
     fi
@@ -71,6 +72,7 @@ better
   cat $outdir/${file_id}.ctm | perl scripts/wordpausestatistic.perl 1.0 $outdir/${file_id}.sent
 
   #cleanup
+  echo "(cleaning intermediate files)">&2
   rm $scratchdir/${file_id}.wav 2>/dev/null
   rm -Rf $target_dir
 
