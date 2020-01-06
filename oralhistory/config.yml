@@ -1,0 +1,3 @@
+root: "{{VIRTUAL_ENV}}/oral_history.clam"
+# root: "/vol/tensusers/eyilmaz/webservices/writable/oral_history"
+port: 8802
