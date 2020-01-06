@@ -1,25 +1,34 @@
 #!/bin/bash
 
 
-fatalerror() {
-    echo "$*" >&2
-    rm $scratchdir/${file_id}.wav 2>/dev/null
-    if [ ! -z "$target_dir" ]; then
-        rm -Rf $target_dir
-    fi
-    exit 2
-}
 
 inputdir=$1
 scratchdir=$2
 outdir=$3
 resourcedir=$4
 topic=$5
+debug=$6
 
 echo "Input directory: $inputdir" >&2
 echo "Scratch directory: $scratchdir" >&2
 echo "Output directory: $outdir" >&2
 echo "Resource directory: $resourcedir" >&2
+
+fatalerror() {
+    echo "-----------------------------------------------------------------------" >&2
+    echo "FATAL ERROR: $*" >&2
+    echo "-----------------------------------------------------------------------" >&2
+    rm $scratchdir/${file_id}.wav 2>/dev/null
+    if [ ! -z "$target_dir" ]; then
+        echo "[Index of $target_dir" >&2
+        du -ah $target_dir >&2
+        echo "[End of index]"
+        if [ ! -z "$debug" ]; then
+            rm -Rf $target_dir
+        fi
+    fi
+    exit 2
+}
 
 cd $resourcedir
 for inputfile in $inputdir/*; do
@@ -50,7 +59,7 @@ for inputfile in $inputdir/*; do
   cat $target_dir/${file_id}.txt | cut -d'(' -f 1 > $outdir/${file_id}.txt
   cp $target_dir/1Best.ctm $outdir/${file_id}.ctm
   ./scripts/ctm2xml.py $outdir $file_id $scratchdir || fatalerror "ctm2xml failed"
-
+better
   # Create .rttm
   spkr_seg=$target_dir/liumlog/${file_id}.seg
   cat $spkr_seg | sed -n '/;;/!p' | sort -nk3 | awk '{printf "SPEAKER %s %s %.2f %.2f <NA> <NA> %s <NA>\n", $1, $2, ($3 / 100), ($4 / 100), $8}' > $outdir/${file_id}.rttm
