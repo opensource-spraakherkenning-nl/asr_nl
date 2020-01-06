@@ -4,7 +4,7 @@
 fatalerror() {
     echo "$*" >&2
     rm $scratchdir/${file_id}.wav 2>/dev/null
-    if [ ! -z "$target_dir"]; then
+    if [ ! -z "$target_dir" ]; then
         rm -Rf $target_dir
     fi
     exit 2
