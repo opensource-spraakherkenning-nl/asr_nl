@@ -38,7 +38,7 @@ for inputfile in $inputdir/*; do
   extension="${filename##*.}"
   file_id=$(basename "$inputfile" .$extension)
   sox $inputfile -e signed-integer -c 1 -r 16000 -b 16 $scratchdir/${file_id}.wav || fatalerror "Failure calling sox"
-  target_dir=$scratchdir/${file_id}_$(date +"%y_%m_%d_%H_%m_%S")
+  target_dir=$scratchdir/${file_id}_$(date +"%y_%m_%d_%H_%M_%S")
   mkdir -p $target_dir || fatalerror "Unable to create temporary working directory $target_dir"
 
   if [[ "$topic" == "GN" ]]; then
