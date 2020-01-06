@@ -23,7 +23,7 @@ fatalerror() {
         echo "[Index of $target_dir" >&2
         du -ah $target_dir >&2
         echo "[End of index]"
-        if [ ! -z "$debug" ]; then
+        if [ -z "$debug" ]; then
             rm -Rf $target_dir
         fi
     fi
