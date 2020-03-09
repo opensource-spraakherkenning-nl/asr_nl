@@ -26,6 +26,9 @@ fatalerror() {
         echo "[Output of intermediate log]" >&2
         cat $target_dir/intermediate/log >&2
         echo "[End output of intermediate log]">&2
+        echo "[Output of intermediate lium logs]" >&2
+        cat $target_dir/intermediate/data/ALL/liumlog/*.log >&2
+        echo "[End output of intermediate log]">&2
         echo "[Output of kaldi decode logs]" >&2
         cat $target_dir/intermediate/decode/decode*log >&2
         echo "[End of kaldi decode logs]" >&2
