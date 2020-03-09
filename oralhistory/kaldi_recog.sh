@@ -20,6 +20,9 @@ fatalerror() {
     echo "-----------------------------------------------------------------------" >&2
     rm $scratchdir/${file_id}.wav 2>/dev/null
     if [ ! -z "$target_dir" ]; then
+        echo "PATH=$PATH" >&2
+        echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH" >&2
+        echo "KALDI_ROOT=$KALDI_ROOT" >&2
         echo "[Index of $target_dir]" >&2
         du -ah $target_dir >&2
         echo "[End of index]">&2
