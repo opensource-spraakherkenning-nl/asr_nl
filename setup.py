@@ -12,7 +12,7 @@ def read(fname):
 
 setup(
     name = "oralhistory",
-    version = "0.2", #also adapt in oral_history.py and codemeta.json
+    version = "0.3", #also adapt in oral_history.py and codemeta.json
     author = "Emre Yilmaz, Maarten van Gompel",
     author_email = "",
     description = ("Dutch Automatic Speech Recognition Webservice"),
