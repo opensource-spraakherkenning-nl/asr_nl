@@ -36,7 +36,7 @@ fatalerror() {
         cat $target_dir/intermediate/data/ALL/log/*.log >&2
         echo "[End output of other intermediate log]">&2
         echo "[Output of kaldi decode logs]" >&2
-        cat $target_dir/intermediate/decode/decode*log >&2
+        cat $target_dir/intermediate/decode//log/decode*log >&2
         echo "[End of kaldi decode logs]" >&2
         if [ ! -z "$debug" ]; then
             echo "(cleaning intermediate files after error)">&2
