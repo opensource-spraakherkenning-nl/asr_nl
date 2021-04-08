@@ -10,10 +10,10 @@
     "@type": "SoftwareSourceCode",
     "identifier": "oralhistory",
     "name": "Automatic Transcription of Dutch Speech Recordings",
-    "version": "0.3",
+    "version": "0.3.1",
     "description": "Automatic Transcription of Dutch Speech Recordings",
     "license": "unknown",
-	"url": "https://github.com/schemreier/oralhistory",
+	"url": "https://github.com/opensource-spraakherkenning-nl/oralhistory",
     "producer": {
         "@id": "https://www.ru.nl/clst",
         "@type": "Organization",
@@ -55,7 +55,7 @@
 	],
 	"sourceOrganization": { "@id": "https://www.ru.nl/clst" },
 	"operatingSystem": "POSIX",
-	"codeRepository": "https://github.com/schemreier/oralhistory",
+	"codeRepository": "https://github.com/opensource-spraakherkenning-nl/oralhistory",
     "softwareRequirements": [
         {
 			"@type": "SoftwareApplication",
@@ -63,8 +63,8 @@
 			"name": "kaldi"
 		}
 	],
-	"readme": "https://github.com/schemreier/oralhistory/blob/master/README.md",
-	"issueTracker": "https://github.com/schemreier/oralhistory/issues",
+	"readme": "https://github.com/opensource-spraakherkenning-nl/oralhistory/blob/master/README.md",
+	"issueTracker": "https://github.com/opensource-spraakherkenning-nl/oralhistory/issues",
 	"developmentStatus": "active",
 	"keywords":  [ "nlp", "speech recognition", "dutch" ],
 	"dateCreated": "2017-04-02"

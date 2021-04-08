@@ -12,13 +12,13 @@ def read(fname):
 
 setup(
     name = "oralhistory",
-    version = "0.3", #also adapt in oral_history.py and codemeta.json
+    version = "0.3.1", #also adapt in oral_history.py and codemeta.json
     author = "Emre Yilmaz, Maarten van Gompel",
     author_email = "",
     description = ("Dutch Automatic Speech Recognition Webservice"),
-    license = "unknown",
+    license = "AGPL3",
     keywords = "clam webservice rest nlp computational_linguistics rest",
-    url = "https://github.com/schemreier/oralhistory",
+    url = "https://github.com/opensource-spraakherkenning-nl/oralhistory",
     packages=['oralhistory'],
     long_description=read('README.md'),
     classifiers=[
