@@ -72,24 +72,18 @@ for inputfile in $inputdir/*; do
       fatalerror "Expected CTM file $target_dir/1Best.ctm not found after decoding!"
   fi
 
+  #strip scores
   cat $target_dir/${file_id}.txt | cut -d'(' -f 1 > $outdir/${file_id}.txt
+
   cp $target_dir/1Best.ctm $outdir/${file_id}.ctm
-  ./scripts/ctm2xml.py $outdir $file_id $scratchdir || fatalerror "ctm2xml failed"
-better
-  # Create .rttm
-  spkr_seg=$target_dir/liumlog/${file_id}.seg
-  cat $spkr_seg | sed -n '/;;/!p' | sort -nk3 | awk '{printf "SPEAKER %s %s %.2f %.2f <NA> <NA> %s <NA>\n", $1, $2, ($3 / 100), ($4 / 100), $8}' > $outdir/${file_id}.rttm
-
-  # Create .ctm with speaker ids
-  ./scripts/addspkctm.py $outdir/${file_id}.rttm $outdir/${file_id}.ctm || fatalerror "Failure calling addspkctm.py"
-
-  # Add sentence boundaries
-  cat $outdir/${file_id}.ctm | perl scripts/wordpausestatistic.perl 1.0 $outdir/${file_id}.sent
+  cp $target_dir/1Best.xml $outdir/${file_id}.xml
+  cp $target_dir/1Best.rttm $outdir/${file_id}.rttm
+  cp $target_dir/1Best.sent $outdir/${file_id}.sent
 
   #cleanup
   echo "(cleaning intermediate files)">&2
   rm $scratchdir/${file_id}.wav 2>/dev/null
-  rm -Rf $target_dir
+  rm -Rf "$target_dir"
 
 done
 cd -
