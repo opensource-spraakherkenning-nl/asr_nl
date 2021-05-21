@@ -36,7 +36,7 @@ fatalerror() {
         cat $target_dir/intermediate/data/ALL/log/*.log >&2
         echo "[End output of other intermediate log]">&2
         echo "[Output of kaldi decode logs]" >&2
-        cat $target_dir/intermediate/decode//log/decode*log >&2
+        cat $target_dir/intermediate/decode/log/decode*log >&2
         echo "[End of kaldi decode logs]" >&2
         if [ ! -z "$debug" ]; then
             echo "(cleaning intermediate files after error)">&2
@@ -76,6 +76,7 @@ for inputfile in $inputdir/*; do
   cat $target_dir/${file_id}.txt | cut -d'(' -f 1 > $outdir/${file_id}.txt
 
   cp $target_dir/1Best.ctm $outdir/${file_id}.ctm
+  cp $target_dir/1Best.ctm.spk $outdir/${file_id}.ctm.spk
   cp $target_dir/1Best.xml $outdir/${file_id}.xml
   cp $target_dir/1Best.rttm $outdir/${file_id}.rttm
   cp $target_dir/1Best.sent $outdir/${file_id}.sent
