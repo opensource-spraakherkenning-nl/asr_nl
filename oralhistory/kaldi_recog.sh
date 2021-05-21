@@ -77,7 +77,7 @@ for inputfile in $inputdir/*; do
 
   cp $target_dir/1Best.ctm $outdir/${file_id}.ctm
   cp $target_dir/1Best.ctm.spk $outdir/${file_id}.ctm.spk
-  cp $target_dir/1Best.xml $outdir/${file_id}.xml
+  cp $target_dir/${file_id}.xml $outdir/${file_id}.xml
   cp $target_dir/1Best.rttm $outdir/${file_id}.rttm
   cp $target_dir/1Best.sent $outdir/${file_id}.sent
 
