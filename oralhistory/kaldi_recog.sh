@@ -46,6 +46,10 @@ fatalerror() {
     exit 2
 }
 
+if [ -z "$topic" ]; then
+    topic="OH"
+fi
+
 cd $resourcedir
 for inputfile in $inputdir/*; do
   filename=$(basename "$inputfile")
