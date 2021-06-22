@@ -18,16 +18,16 @@ fatalerror() {
     echo "-----------------------------------------------------------------------" >&2
     echo "FATAL ERROR: $*" >&2
     echo "-----------------------------------------------------------------------" >&2
-    rm $scratchdir/${file_id}.wav 2>/dev/null
-    if [ ! -z "$target_dir" ]; then
+    rm "$scratchdir/${file_id}.wav" 2>/dev/null
+    if [ -n "$target_dir" ]; then
         echo "PATH=$PATH" >&2
         echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH" >&2
         echo "KALDI_ROOT=$KALDI_ROOT" >&2
         echo "[Index of $target_dir]" >&2
-        du -ah $target_dir >&2
+        du -ah "$target_dir" >&2
         echo "[End of index]">&2
         echo "[Output of intermediate log]" >&2
-        cat $target_dir/intermediate/log >&2
+        cat "$target_dir/intermediate/log" >&2
         echo "[End output of intermediate log]">&2
         echo "[Output of intermediate lium logs]" >&2
         cat $target_dir/intermediate/data/ALL/liumlog/*.log >&2
@@ -40,7 +40,7 @@ fatalerror() {
         echo "[End of kaldi decode logs]" >&2
         if [ ! -z "$debug" ]; then
             echo "(cleaning intermediate files after error)">&2
-            rm -Rf $target_dir
+            rm -Rf "$target_dir"
         fi
     fi
     exit 2
@@ -50,15 +50,15 @@ if [ -z "$topic" ]; then
     topic="OH"
 fi
 
-cd $resourcedir
+cd "$resourcedir"
 for inputfile in $inputdir/*; do
   filename=$(basename "$inputfile")
   echo "Processing $filename" >&2
   extension="${filename##*.}"
-  file_id=$(basename "$inputfile" .$extension)
+  file_id=$(basename "$inputfile" ."$extension")
   sox $inputfile -e signed-integer -c 1 -r 16000 -b 16 $scratchdir/${file_id}.wav || fatalerror "Failure calling sox"
   target_dir=$scratchdir/${file_id}_$(date +"%y_%m_%d_%H_%M_%S_%N")
-  mkdir -p $target_dir || fatalerror "Unable to create temporary working directory $target_dir"
+  mkdir -p "$target_dir" || fatalerror "Unable to create temporary working directory $target_dir"
 
   if [[ "$topic" == "GN" ]]; then
     ./decode_GN.sh "$scratchdir/${file_id}.wav" "$target_dir" || fatalerror "Decoding failed (GN)"
@@ -72,7 +72,7 @@ for inputfile in $inputdir/*; do
       fatalerror "Expected target file $target_dir/${file_id}.txt not found after decoding!"
   fi
 
-  if [ ! -f $target_dir/1Best.ctm ]; then
+  if [ ! -f "$target_dir/1Best.ctm" ]; then
       fatalerror "Expected CTM file $target_dir/1Best.ctm not found after decoding!"
   fi
 
