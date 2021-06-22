@@ -61,14 +61,14 @@ for inputfile in $inputdir/*; do
   mkdir -p $target_dir || fatalerror "Unable to create temporary working directory $target_dir"
 
   if [[ "$topic" == "GN" ]]; then
-    ./decode_GN.sh $scratchdir/${file_id}.wav $target_dir || fatalerror "Decoding failed (GN)"
+    ./decode_GN.sh "$scratchdir/${file_id}.wav" "$target_dir" || fatalerror "Decoding failed (GN)"
   elif [[ "$topic" == "OH" ]]; then
-    ./decode_OH.sh $scratchdir/${file_id}.wav $target_dir || fatalerror "Decoding failed (OH)"
+    ./decode_OH.sh "$scratchdir/${file_id}.wav" "$target_dir" || fatalerror "Decoding failed (OH)"
   elif [[ "$topic" == "PR" ]]; then
-    ./decode_PR.sh $scratchdir/${file_id}.wav $target_dir || fatalerror "Decoding failed (PR)"
+    ./decode_PR.sh "$scratchdir/${file_id}.wav" "$target_dir" || fatalerror "Decoding failed (PR)"
   fi
 
-  if [ ! -f $target_dir/${file_id}.txt ]; then
+  if [ ! -f "$target_dir/${file_id}.txt" ]; then
       fatalerror "Expected target file $target_dir/${file_id}.txt not found after decoding!"
   fi
 
@@ -77,17 +77,17 @@ for inputfile in $inputdir/*; do
   fi
 
   #strip scores
-  cat $target_dir/${file_id}.txt | cut -d'(' -f 1 > $outdir/${file_id}.txt
+  cat "$target_dir/${file_id}.txt" | cut -d'(' -f 1 > "$outdir/${file_id}.txt"
 
-  cp $target_dir/1Best.ctm $outdir/${file_id}.ctm
-  cp $target_dir/1Best.ctm.spk $outdir/${file_id}.ctm.spk
-  cp $target_dir/${file_id}.xml $outdir/${file_id}.xml
-  cp $target_dir/1Best.rttm $outdir/${file_id}.rttm
-  cp $target_dir/1Best.sent $outdir/${file_id}.sent
+  cp "$target_dir/1Best.ctm" "$outdir/${file_id}.ctm"
+  cp "$target_dir/1Best.ctm.spk" "$outdir/${file_id}.ctm.spk"
+  cp "$target_dir/${file_id}.xml" "$outdir/${file_id}.xml"
+  cp "$target_dir/1Best.rttm" "$outdir/${file_id}.rttm"
+  cp "$target_dir/1Best.sent" "$outdir/${file_id}.sent"
 
   #cleanup
   echo "(cleaning intermediate files)">&2
-  rm $scratchdir/${file_id}.wav 2>/dev/null
+  rm "$scratchdir/${file_id}.wav" 2>/dev/null
   rm -Rf "$target_dir"
 
 done
