@@ -42,11 +42,11 @@ WEBSERVICEDIR = os.path.dirname(os.path.abspath(__file__)) #directory where this
 
 
 #The System ID, a short alphanumeric identifier for internal use only
-SYSTEM_ID = "oral_history"
+SYSTEM_ID = "asr_nl"
 #System name, the way the system is presented to the world
 SYSTEM_NAME = "Automatic Transcription of Dutch Speech Recordings"
 
-SYSTEM_VERSION = "0.4.1" #also adapt in setup.py and codemeta.json
+SYSTEM_VERSION = "0.5.0" #also adapt in setup.py and codemeta.json
 
 #An informative description for this system (this should be fairly short, about one paragraph, and may not contain HTML)
 SYSTEM_DESCRIPTION = "This webservice uses automatic speech recognition to provide the transcriptions of recordings spoken in Dutch. You can upload and process only one file per project. For bulk processing and other questions, please contact Henk van den Heuvel at h.vandenheuvel@let.ru.nl."
@@ -55,7 +55,7 @@ SYSTEM_AUTHOR = "Emre Yilmaz, Maarten van Gompel"
 
 SYSTEM_AFFILIATION = "Centre for Language and Speech Technology, Radboud University"
 
-SYSTEM_URL = "https://github.com/opensource-spraakherkenning-nl/oralhistory"
+SYSTEM_URL = "https://github.com/opensource-spraakherkenning-nl/asr_nl"
 
 SYSTEM_EMAIL = "h.vandenheuvel@let.ru.nl"
 
@@ -288,8 +288,6 @@ PROFILES = [
 #     $USERNAME        - The username of the currently logged in user
 #                        (set to "anonymous" if there is none)
 #     $PARAMETERS      - List of chosen parameters, using the specified flags
-#
-# COMMAND = WEBSERVICEDIR + "/oral_history_wrapper.sh $DATAFILE $STATUSFILE $OUTPUTDIRECTORY"
 
 #set variables only if they're not yet defined (in the external configuration)
 try:
@@ -301,7 +299,7 @@ try:
 except NameError:
     RESOURCEDIRECTORY=ROOT+'/resources/'
 
-COMMAND = WEBSERVICEDIR + "/oral_history_wrapper.sh $STATUSFILE $INPUTDIRECTORY $OUTPUTDIRECTORY "+SCRATCHDIRECTORY+" "+WEBSERVICEDIR+" "+RESOURCEDIRECTORY+" $PARAMETERS"
+COMMAND = WEBSERVICEDIR + "/wrapper.sh $STATUSFILE $INPUTDIRECTORY $OUTPUTDIRECTORY "+SCRATCHDIRECTORY+" "+WEBSERVICEDIR+" "+RESOURCEDIRECTORY+" $PARAMETERS"
 
 #Or if you only use the action paradigm, set COMMAND = None
 

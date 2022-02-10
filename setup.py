@@ -11,15 +11,15 @@ def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname), 'r', encoding='utf-8').read()
 
 setup(
-    name = "oralhistory",
-    version = "0.4.1", #also adapt in oral_history.py and codemeta.json
-    author = "Emre Yilmaz, Maarten van Gompel",
+    name = "asr_nl",
+    version = "0.5.0", #also adapt in asr_nl.py and codemeta.json
+    author = "Emre Yilmaz, Maarten van Gompel, Louis ten Bosch",
     author_email = "",
-    description = ("Dutch Automatic Speech Recognition Webservice"),
+    description = ("Automatic Speech Recognition for Dutch - Webservice"),
     license = "AGPL3",
     keywords = "clam webservice rest nlp computational_linguistics rest",
-    url = "https://github.com/opensource-spraakherkenning-nl/oralhistory",
-    packages=['oralhistory'],
+    url = "https://github.com/opensource-spraakherkenning-nl/asr_nl",
+    packages=['asr_nl'],
     long_description=read('README.md'),
     classifiers=[
         "Development Status :: 5 - Production/Stable",
@@ -31,7 +31,7 @@ setup(
         "Intended Audience :: Science/Research",
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
     ],
-    package_data = {'oralhistory':['*.sh','*.wsgi','*.yml'] },
+    package_data = {'asr_nl':['*.sh','*.wsgi','*.yml'] },
     include_package_data=True,
     install_requires=['CLAM >= 3.0']
 )
