@@ -9,7 +9,7 @@ LABEL description="A LaMachine installation with the webservice Automatic Speech
 #RUN lamachine-config lm_base_url https://your.domain.here
 #RUN lamachine-config force_https yes
 
-# The oral history webservice will be served on the /oralhistory path
+# The webservice will be served on the /asr_nl path
 
 # (opt-out sending some basic anonymized statistics about the installation)
 #RUN lamachine-config private true
@@ -37,8 +37,8 @@ LABEL description="A LaMachine installation with the webservice Automatic Speech
 # extra documentation on authentication
 # - the oauth client id and client secret must be registered with/provider by your
 #   authentication provider
-# - the callback URL to register with the authentication provider, for the oralhistory
-#   webservice,  will be https://your.domain/oralhistory/login)
+# - the callback URL to register with the authentication provider, for the asr_nl
+#   webservice,  will be https://your.domain/asr_nl/login)
 
 # (this is the mount point where the external volume can be mounted that holds all user-data for the webservice)
 # (i.e. the input and output files users upload and obtain. Uncomment all this if you want to store the data
