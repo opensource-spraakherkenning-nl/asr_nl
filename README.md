@@ -24,7 +24,7 @@ in your own infrastructure. In that case will want adjust the ``Dockerfile`` to 
 Run the container as follows:
 
 ```
-$ docker run -p 8080:80 proycon/lamachine:asr_nl
+$ docker run -v /path/to/your/data:/data -p 8080:80 proycon/lamachine:asr_nl
 ```
 
 Assuming you run locally, the web interface for Kaldi-NL can then be accessed on ``http://127.0.0.1:8080/asr_nl``.
