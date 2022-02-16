@@ -10,7 +10,7 @@
     "@type": "SoftwareSourceCode",
     "identifier": "asr_nl",
     "name": "Automatic Speech Recognition for Dutch",
-    "version": "0.5.0",
+    "version": "0.5.1",
     "description": "This is a web-based automatic speech recogniser for Dutch, capable of transcribing dutch speech recordings using multiple models.",
     "license": "unknown",
 	"url": "https://github.com/opensource-spraakherkenning-nl/asr_nl",
