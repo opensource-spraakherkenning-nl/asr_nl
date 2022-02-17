@@ -60,13 +60,14 @@ for inputfile in "$inputdir"/*; do
   target_dir="$scratchdir/${file_id}_$(date +"%y_%m_%d_%H_%M_%S_%N")"
   mkdir -p "$target_dir" || fatalerror "Unable to create temporary working directory $target_dir"
 
-  if [ "$topic" = "GN" ]; then
-    ./decode_GN.sh "$scratchdir/${file_id}.wav" "$target_dir" || fatalerror "Decoding failed (GN)"
-  elif [ "$topic" = "OH" ]; then
-    ./decode_OH.sh "$scratchdir/${file_id}.wav" "$target_dir" || fatalerror "Decoding failed (OH)"
-  elif [ "$topic" == "PR" ]; then
-    ./decode_PR.sh "$scratchdir/${file_id}.wav" "$target_dir" || fatalerror "Decoding failed (PR)"
-  fi
+  case "$topic" in
+      "GN"|"OH"|"PR"|"BD")
+        ./decode_$topic.sh "$scratchdir/${file_id}.wav" "$target_dir" || fatalerror "Decoding failed ($topic)"
+        ;;
+      *)
+        fatalerror "Unknown topic ($topic)"
+        ;;
+  esac
 
   if [ ! -f "$target_dir/${file_id}.txt" ]; then
       fatalerror "Expected target file $target_dir/${file_id}.txt not found after decoding!"
@@ -77,7 +78,7 @@ for inputfile in "$inputdir"/*; do
   fi
 
   #strip scores
-  cat "$target_dir/${file_id}.txt" | cut -d'(' -f 1 > "$outdir/${file_id}.txt"
+  cut -d'(' -f 1 "$target_dir/${file_id}.txt" > "$outdir/${file_id}.txt"
 
   cp "$target_dir/1Best.ctm" "$outdir/${file_id}.ctm"
   cp "$target_dir/1Best.ctm.spk" "$outdir/${file_id}.ctm.spk"
@@ -91,4 +92,4 @@ for inputfile in "$inputdir"/*; do
   rm -Rf "$target_dir"
 
 done
-cd -
+cd - || exit

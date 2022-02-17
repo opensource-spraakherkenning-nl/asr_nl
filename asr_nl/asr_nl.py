@@ -311,7 +311,7 @@ COMMAND = WEBSERVICEDIR + "/wrapper.sh $STATUSFILE $INPUTDIRECTORY $OUTPUTDIRECT
 
 PARAMETERS =  [
     ('Model selection', [
-        ChoiceParameter(id='topic',name='Topic',description='This recording contains', default='OH', choices=[('GN','daily conversations'),('OH','oral history interviews'),('PR','parliament talks')], paramflag=''),
+        ChoiceParameter(id='topic',name='Topic',description='This recording contains', default='OH', choices=[('GN','daily conversations'),('OH','oral history interviews'),('PR','parliament talks'),('BD','Belgian Dutch')], paramflag=''),
         #BooleanParameter(id='createlexicon',name='Create Lexicon',description='Generate a separate overall lexicon?'),
         #ChoiceParameter(id='casesensitive',name='Case Sensitivity',description='Enable case sensitive behaviour?', choices=['yes','no'],default='no'),
         #StringParameter(id='author',name='Author',description='Sign output metadata with the specified author name',maxlength=255),
