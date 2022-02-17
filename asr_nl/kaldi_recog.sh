@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 
 
@@ -60,11 +60,11 @@ for inputfile in "$inputdir"/*; do
   target_dir="$scratchdir/${file_id}_$(date +"%y_%m_%d_%H_%M_%S_%N")"
   mkdir -p "$target_dir" || fatalerror "Unable to create temporary working directory $target_dir"
 
-  if [[ "$topic" == "GN" ]]; then
+  if [ "$topic" = "GN" ]; then
     ./decode_GN.sh "$scratchdir/${file_id}.wav" "$target_dir" || fatalerror "Decoding failed (GN)"
-  elif [[ "$topic" == "OH" ]]; then
+  elif [ "$topic" = "OH" ]; then
     ./decode_OH.sh "$scratchdir/${file_id}.wav" "$target_dir" || fatalerror "Decoding failed (OH)"
-  elif [[ "$topic" == "PR" ]]; then
+  elif [ "$topic" == "PR" ]; then
     ./decode_PR.sh "$scratchdir/${file_id}.wav" "$target_dir" || fatalerror "Decoding failed (PR)"
   fi
 
