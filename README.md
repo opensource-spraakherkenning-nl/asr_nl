@@ -15,17 +15,19 @@ For end-users and hosting partners, we provide a container image that ships with
 for end-users. You can pull a prebuilt image from the Docker Hub registry using docker as follows:
 
 ```
-$ docker pull proycon/lamachine:asr_nl
+$ docker pull proycon/asr_nl
 ```
 
-You can also build the container image yourself using a tool like ``docker build``, which is the recommended option if you are deploying this
-in your own infrastructure. In that case will want adjust the ``Dockerfile`` to set some parameters.
+You can also build the container image yourself using a tool like ``docker build``, which is the recommended option if
+you are deploying this in your own infrastructure. In that case will want adjust the ``Dockerfile`` to set some
+parameters.
 
 Run the container as follows:
 
 ```
-$ docker run -v /path/to/your/data:/data -p 8080:80 proycon/lamachine:asr_nl
+$ docker run -v /path/to/your/data:/data -p 8080:80 proycon/asr_nl
 ```
+Ensure that the directory you pass is writable.
 
-Assuming you run locally, the web interface for Kaldi-NL can then be accessed on ``http://127.0.0.1:8080/asr_nl``.
+Assuming you run locally, the web interface can then be accessed on ``http://127.0.0.1:8080/``.
 
