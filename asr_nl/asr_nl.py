@@ -295,7 +295,7 @@ try:
 except NameError:
     SCRATCHDIRECTORY=ROOT+'/scratch/'
 try:
-    RESOURCEDIRECTORY
+    RESOURCEDIRECTORY #This will be the Kaldi_NL directory typically
 except NameError:
     RESOURCEDIRECTORY=ROOT+'/resources/'
 
