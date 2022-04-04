@@ -10,9 +10,9 @@
     "@type": "SoftwareSourceCode",
     "identifier": "asr_nl",
     "name": "Automatic Speech Recognition for Dutch",
-    "version": "0.5.1",
+    "version": "0.5.2",
     "description": "This is a web-based automatic speech recogniser for Dutch, capable of transcribing dutch speech recordings using multiple models.",
-    "license": "unknown",
+    "license": "https://spdx.org/licenses/AGPL-3.0-only",
 	"url": "https://github.com/opensource-spraakherkenning-nl/asr_nl",
     "producer": {
         "@id": "https://www.ru.nl/clst",
@@ -61,9 +61,14 @@
 		}
 	],
 	"sourceOrganization": { "@id": "https://www.ru.nl/clst" },
-	"operatingSystem": "POSIX",
+	"operatingSystem": "Linux",
 	"codeRepository": "https://github.com/opensource-spraakherkenning-nl/asr_nl",
     "softwareRequirements": [
+        {
+			"@type": "SoftwareApplication",
+			"identifier": "kaldi_nl",
+			"name": "Kaldi_NL"
+		},
         {
 			"@type": "SoftwareApplication",
 			"identifier": "kaldi",
@@ -72,7 +77,7 @@
 	],
 	"readme": "https://github.com/opensource-spraakherkenning-nl/asr_nl/blob/master/README.md",
 	"issueTracker": "https://github.com/opensource-spraakherkenning-nl/asr_nl/issues",
-	"developmentStatus": "active",
+	"developmentStatus": "https://www.repostatus.org/#active",
 	"keywords":  [ "nlp", "speech recognition", "dutch" ],
 	"dateCreated": "2017-04-02"
 }
