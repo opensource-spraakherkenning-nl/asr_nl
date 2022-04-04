@@ -16,7 +16,7 @@ setup(
     author = "Emre Yilmaz, Maarten van Gompel, Louis ten Bosch",
     author_email = "",
     description = ("Automatic Speech Recognition for Dutch - Webservice"),
-    license = "AGPL3",
+    license = "AGPL-3.0-only",
     keywords = "clam webservice rest nlp computational_linguistics rest",
     url = "https://github.com/opensource-spraakherkenning-nl/asr_nl",
     packages=['asr_nl'],
@@ -33,5 +33,5 @@ setup(
     ],
     package_data = {'asr_nl':['*.sh','*.wsgi','*.yml'] },
     include_package_data=True,
-    install_requires=['CLAM >= 3.0']
+    install_requires=['CLAM >= 3.1.2']
 )
