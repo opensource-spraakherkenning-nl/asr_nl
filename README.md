@@ -18,10 +18,6 @@ for end-users. You can pull a prebuilt image from the Docker Hub registry using 
 $ docker pull proycon/asr_nl
 ```
 
-You can also build the container image yourself using a tool like ``docker build``, which is the recommended option if
-you are deploying this in your own infrastructure. In that case will want adjust the ``Dockerfile`` to set some
-parameters.
-
 Run the container as follows:
 
 ```
@@ -31,3 +27,6 @@ Ensure that the directory you pass is writable.
 
 Assuming you run locally, the web interface can then be accessed on ``http://127.0.0.1:8080/``.
 
+If you want to deploy this service on your own infrastructure, you will want to set some of the environment variables
+defined in the `Dockerfile` when running the container, most notably the ones regarding authentication, as this is by
+default disabled and as such *NOT* suitable for production deployments.
