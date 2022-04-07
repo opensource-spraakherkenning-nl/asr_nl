@@ -10,7 +10,7 @@
     "@type": "SoftwareSourceCode",
     "identifier": "asr_nl",
     "name": "Automatic Speech Recognition for Dutch",
-    "version": "0.5.2",
+    "version": "0.5.3",
     "description": "This is a web-based automatic speech recogniser for Dutch, capable of transcribing dutch speech recordings using multiple models.",
     "license": "https://spdx.org/licenses/AGPL-3.0-only",
 	"url": "https://github.com/opensource-spraakherkenning-nl/asr_nl",
@@ -60,6 +60,13 @@
 			"affiliation": { "@id": "https://www.ru.nl/clst" }
 		}
 	],
+    "maintainer": {
+        "@type": "Person",
+        "givenName": "Maarten",
+        "familyName": "van Gompel",
+        "email": "proycon@anaproy.nl",
+        "affiliation": { "@id": "https://www.ru.nl/clst" }
+    },
 	"sourceOrganization": { "@id": "https://www.ru.nl/clst" },
 	"operatingSystem": "Linux",
 	"codeRepository": "https://github.com/opensource-spraakherkenning-nl/asr_nl",
@@ -73,6 +80,11 @@
 			"@type": "SoftwareApplication",
 			"identifier": "kaldi",
 			"name": "kaldi"
+		},
+        {
+			"@type": "SoftwareApplication",
+			"identifier": "clam",
+			"name": "CLAM"
 		}
 	],
 	"readme": "https://github.com/opensource-spraakherkenning-nl/asr_nl/blob/master/README.md",
