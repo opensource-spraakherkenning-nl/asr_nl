@@ -12,7 +12,7 @@ def read(fname):
 
 setup(
     name = "asr_nl",
-    version = "0.5.4", #also adapt in asr_nl.py and codemeta.json
+    version = "0.5.5", #also adapt in asr_nl.py and codemeta.json
     author = "Emre Yilmaz, Maarten van Gompel, Louis ten Bosch",
     author_email = "proycon@anaproy.nl",
     description = ("Automatic Speech Recognition for Dutch - Webservice"),
