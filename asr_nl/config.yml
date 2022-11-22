@@ -17,3 +17,15 @@ oauth_userinfo_url: "{{CLAM_OAUTH_USERINFO_URL}}"
 oauth_revoke_url: "{{CLAM_OAUTH_REVOKE_URL}}"
 oauth_scope: "{{CLAM_OAUTH_SCOPE|json}}"
 resourcedirectory: "/opt/Kaldi_NL/"
+
+# HTTP Basic Authentication via a simple TSV file (disabled by default)
+users_file: "{{CLAM_USERS_FILE}}"
+realm: "{{CLAM_REALM={sys_id}}}"
+
+#Interface customisation
+customhtml_index: "{{CLAM_CUSTOMHTML_INDEX}}"
+customhtml_projectstart: "{{CLAM_CUSTOMHTML_PROJECTSTART}}"
+customhtml_projectdone: "{{CLAM_CUSTOMHTML_PROJECTDONE}}"
+customhtml_projectfailed: "{{CLAM_CUSTOMHTML_PROJECTFAILED}}"
+customcss: "{{CLAM_CUSTOMCSS}}"
+interfaceoptions: "{{CLAM_INTERFACEOPTIONS}}"
