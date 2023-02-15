@@ -52,8 +52,13 @@ fi
 
 cd "$resourcedir" || fatalerror "Resourcedir not found"
 for inputfile in "$inputdir"/*; do
-  filename=$(basename "$inputfile")
+
+  # added to robustify against spaces om filenames (louis)
+  filename0=$(basename "$inputfile")
+  echo "Processing $filename0" >&2
+  filename=`echo $filename0 | sed 's/ /_/g'`
   echo "Processing $filename" >&2
+ 
   extension="${filename##*.}"
   file_id=$(basename "$inputfile" ."$extension")
   sox "$inputfile" -e signed-integer -c 1 -r 16000 -b 16 "$scratchdir/${file_id}.wav" || fatalerror "Failure calling sox"
