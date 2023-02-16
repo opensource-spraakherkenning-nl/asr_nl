@@ -63,7 +63,7 @@ for inputfile in "$inputdir"/*; do
 
   case "$topic" in
       "GN"|"OH"|"PR"|"BD")
-        ./decode_$topic.sh "$scratchdir/${file_id}.wav" "$target_dir" || fatalerror "Decoding failed ($topic)"
+        ./"decode_$topic.sh" "$scratchdir/${file_id}.wav" "$target_dir" || fatalerror "Decoding failed ($topic)"
         ;;
       *)
         fatalerror "Unknown topic ($topic)"
