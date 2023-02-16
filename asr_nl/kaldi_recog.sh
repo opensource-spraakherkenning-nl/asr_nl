@@ -53,14 +53,10 @@ fi
 cd "$resourcedir" || fatalerror "Resourcedir not found"
 for inputfile in "$inputdir"/*; do
 
-  # added to robustify against spaces om filenames (louis)
-  filename0=$(basename "$inputfile")
-  echo "Processing $filename0" >&2
-  filename=`echo $filename0 | sed 's/ /_/g'`
   echo "Processing $filename" >&2
  
   extension="${filename##*.}"
-  file_id=$(basename "$inputfile" ."$extension")
+  file_id=$(basename "$inputfile" ."$extension" | sed 's/ /_/g')
   sox "$inputfile" -e signed-integer -c 1 -r 16000 -b 16 "$scratchdir/${file_id}.wav" || fatalerror "Failure calling sox"
   target_dir="$scratchdir/${file_id}_$(date +"%y_%m_%d_%H_%M_%S_%N")"
   mkdir -p "$target_dir" || fatalerror "Unable to create temporary working directory $target_dir"
