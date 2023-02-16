@@ -274,7 +274,7 @@ PROFILES = [
             extension='.xml', #set an extension or set a filename:
             multi=True
         )
-    )
+    ),
     Profile(
         InputTemplate('InputMP4File',MP4AudioFormat,"MP4 file",
             #StaticParameter(id='encoding',name='Encoding',description='The character encoding of the file', value='utf-8'), #note that encoding is required if you work with PlainTextFormat
