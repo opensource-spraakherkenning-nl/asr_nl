@@ -119,7 +119,19 @@ class CTMFormat(CLAMMetaData):
     name = "Conversation Time Marked File"
     mimetype = "text/plain"
 
-CUSTOM_FORMATS = [ CTMFormat ]
+class MP4AudioFormat(CLAMMetaData):
+    attributes = {}
+    name ="MP4 Audio File"
+    mimetype = 'audio/mpeg'
+    schemaorg_type = "AudioObject"
+
+class FlacAudioFormat(CLAMMetaData):
+    attributes = {}
+    name ="Flac Audio File"
+    mimetype = 'audio/flac'
+    schemaorg_type = "AudioObject"
+
+CUSTOM_FORMATS = [ CTMFormat, MP4AudioFormat ]
 
 # ======= INTERFACE OPTIONS ===========
 
@@ -263,6 +275,133 @@ PROFILES = [
             multi=True
         )
     )
+    Profile(
+        InputTemplate('InputMP4File',MP4AudioFormat,"MP4 file",
+            #StaticParameter(id='encoding',name='Encoding',description='The character encoding of the file', value='utf-8'), #note that encoding is required if you work with PlainTextFormat
+            #StringParameter(id='author',name='Author',description="The author's name", maxlength=100),
+            #InputSource(id='sampledoc', label="Sample Document", path=ROOT+'/inputsources/sampledoc.txt', metadata=PlainTextFormat(None, encoding='utf-8',language='en')),
+            #CharEncodingConverter(id='latin1',label='Convert from Latin-1',charset='iso-8859-1'),
+            #MP3toWaveConverter(id='mp3conv',label='Convert from MP3 File using sox'),
+            #OggtoWaveConverter(id='oggconv',label='Convert from OGG File using sox'),
+            extension='.mp4',
+            #filename='filename.txt',
+            multi=True #set unique=True if the user may only upload a file for this input template once. Set multi=True if you the user may upload multiple of such files
+        ),
+        #------------------------------------------------------------------------------------------------------------------------
+        OutputTemplate('Transcription',PlainTextFormat,'Automatic transcription of the input recording',
+            SetMetaField('encoding','utf-8'), #note that encoding is required if you work with PlainTextFormat
+            removeextension=".mp4",
+            extension='.txt', #set an extension or set a filename:
+            #filename='filename.stats',
+            multi=True
+        ),
+        OutputTemplate('TranscriptionCTM',CTMFormat,'Automatic transcription of the input recording with timestamps (CTM)',
+            SetMetaField('encoding','utf-8'), #note that encoding is required if you work with PlainTextFormat
+            removeextension=".mp4",
+            extension='.ctm', #set an extension or set a filename:
+            #filename='filename.stats',
+            multi=True
+        ),
+        OutputTemplate('TranscriptionCTM',CTMFormat,'Automatic transcription of the input recording with timestamps (CTM) and speaker diarisation',
+            SetMetaField('encoding','utf-8'), #note that encoding is required if you work with PlainTextFormat
+            removeextension=".mp4",
+            extension='.ctm.spk', #set an extension or set a filename:
+            #filename='filename.stats',
+            multi=True
+        ),
+        OutputTemplate('TranscriptionXML', XMLFormat,'Automatic transcription of the input recording (full data) (AudioDoc XML)',
+            SetMetaField('encoding','utf-8'), #note that encoding is required if you work with PlainTextFormat
+            removeextension=".mp4",
+            extension='.xml', #set an extension or set a filename:
+            #filename='filename.stats',
+            multi=True
+        )
+    ),
+    Profile(
+        # Note: M4A and MP4 are exactly the same
+        InputTemplate('InputM4AFile',MP4AudioFormat,"M4A file",
+            #StaticParameter(id='encoding',name='Encoding',description='The character encoding of the file', value='utf-8'), #note that encoding is required if you work with PlainTextFormat
+            #StringParameter(id='author',name='Author',description="The author's name", maxlength=100),
+            #InputSource(id='sampledoc', label="Sample Document", path=ROOT+'/inputsources/sampledoc.txt', metadata=PlainTextFormat(None, encoding='utf-8',language='en')),
+            #CharEncodingConverter(id='latin1',label='Convert from Latin-1',charset='iso-8859-1'),
+            #MP3toWaveConverter(id='mp3conv',label='Convert from MP3 File using sox'),
+            #OggtoWaveConverter(id='oggconv',label='Convert from OGG File using sox'),
+            extension='.m4a',
+            #filename='filename.txt',
+            multi=True #set unique=True if the user may only upload a file for this input template once. Set multi=True if you the user may upload multiple of such files
+        ),
+        #------------------------------------------------------------------------------------------------------------------------
+        OutputTemplate('Transcription',PlainTextFormat,'Automatic transcription of the input recording',
+            SetMetaField('encoding','utf-8'), #note that encoding is required if you work with PlainTextFormat
+            removeextension=".m4a",
+            extension='.txt', #set an extension or set a filename:
+            #filename='filename.stats',
+            multi=True
+        ),
+        OutputTemplate('TranscriptionCTM',CTMFormat,'Automatic transcription of the input recording with timestamps (CTM)',
+            SetMetaField('encoding','utf-8'), #note that encoding is required if you work with PlainTextFormat
+            removeextension=".m4a",
+            extension='.ctm', #set an extension or set a filename:
+            #filename='filename.stats',
+            multi=True
+        ),
+        OutputTemplate('TranscriptionCTM',CTMFormat,'Automatic transcription of the input recording with timestamps (CTM) and speaker diarisation',
+            SetMetaField('encoding','utf-8'), #note that encoding is required if you work with PlainTextFormat
+            removeextension=".m4a",
+            extension='.ctm.spk', #set an extension or set a filename:
+            #filename='filename.stats',
+            multi=True
+        ),
+        OutputTemplate('TranscriptionXML', XMLFormat,'Automatic transcription of the input recording (full data) (AudioDoc XML)',
+            SetMetaField('encoding','utf-8'), #note that encoding is required if you work with PlainTextFormat
+            removeextension=".m4a",
+            extension='.xml', #set an extension or set a filename:
+            #filename='filename.stats',
+            multi=True
+        )
+    ),
+    Profile(
+        InputTemplate('InputFlacFile',MP4AudioFormat,"Flac file",
+            #StaticParameter(id='encoding',name='Encoding',description='The character encoding of the file', value='utf-8'), #note that encoding is required if you work with PlainTextFormat
+            #StringParameter(id='author',name='Author',description="The author's name", maxlength=100),
+            #InputSource(id='sampledoc', label="Sample Document", path=ROOT+'/inputsources/sampledoc.txt', metadata=PlainTextFormat(None, encoding='utf-8',language='en')),
+            #CharEncodingConverter(id='latin1',label='Convert from Latin-1',charset='iso-8859-1'),
+            #MP3toWaveConverter(id='mp3conv',label='Convert from MP3 File using sox'),
+            #OggtoWaveConverter(id='oggconv',label='Convert from OGG File using sox'),
+            extension='.flac',
+            #filename='filename.txt',
+            multi=True #set unique=True if the user may only upload a file for this input template once. Set multi=True if you the user may upload multiple of such files
+        ),
+        #------------------------------------------------------------------------------------------------------------------------
+        OutputTemplate('Transcription',PlainTextFormat,'Automatic transcription of the input recording',
+            SetMetaField('encoding','utf-8'), #note that encoding is required if you work with PlainTextFormat
+            removeextension=".flac",
+            extension='.txt', #set an extension or set a filename:
+            #filename='filename.stats',
+            multi=True
+        ),
+        OutputTemplate('TranscriptionCTM',CTMFormat,'Automatic transcription of the input recording with timestamps (CTM)',
+            SetMetaField('encoding','utf-8'), #note that encoding is required if you work with PlainTextFormat
+            removeextension=".flac",
+            extension='.ctm', #set an extension or set a filename:
+            #filename='filename.stats',
+            multi=True
+        ),
+        OutputTemplate('TranscriptionCTM',CTMFormat,'Automatic transcription of the input recording with timestamps (CTM) and speaker diarisation',
+            SetMetaField('encoding','utf-8'), #note that encoding is required if you work with PlainTextFormat
+            removeextension=".flac",
+            extension='.ctm.spk', #set an extension or set a filename:
+            #filename='filename.stats',
+            multi=True
+        ),
+        OutputTemplate('TranscriptionXML', XMLFormat,'Automatic transcription of the input recording (full data) (AudioDoc XML)',
+            SetMetaField('encoding','utf-8'), #note that encoding is required if you work with PlainTextFormat
+            removeextension=".flac",
+            extension='.xml', #set an extension or set a filename:
+            #filename='filename.stats',
+            multi=True
+        )
+    ),
 
 ]
 
