@@ -57,7 +57,9 @@ for inputfile in "$inputdir"/*; do
  
   extension="${filename##*.}"
   file_id=$(basename "$inputfile" ."$extension" | sed 's/ /_/g')
-  sox "$inputfile" -e signed-integer -c 1 -r 16000 -b 16 "$scratchdir/${file_id}.wav" || fatalerror "Failure calling sox"
+  #sox "$inputfile" -e signed-integer -c 1 -r 16000 -b 16 "$scratchdir/${file_id}.wav" || fatalerror "Failure calling sox"
+  ffmpeg -i "$inputfile" -sample_fmt s16 -ac 1 -ar 16000 "$scratchdir/${file_id}.wav" || fatalerror "Failure calling ffmpeg"
+
   target_dir="$scratchdir/${file_id}_$(date +"%y_%m_%d_%H_%M_%S_%N")"
   mkdir -p "$target_dir" || fatalerror "Unable to create temporary working directory $target_dir"
 
