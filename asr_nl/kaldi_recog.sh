@@ -56,7 +56,8 @@ for inputfile in "$inputdir"/*; do
   echo "Processing $filename" >&2
  
   extension="${filename##*.}"
-  file_id=$(basename "$inputfile" ."$extension" | sed 's/ /_/g')
+  #file_id=$(basename "$inputfile" ."$extension" | sed 's/ /_/g')
+  file_id=$(basename "$inputfile" ."$extension" | sed 's/[^a-zA-Z0-9\.\-]/_/g')
   #sox "$inputfile" -e signed-integer -c 1 -r 16000 -b 16 "$scratchdir/${file_id}.wav" || fatalerror "Failure calling sox"
   ffmpeg -i "$inputfile" -sample_fmt s16 -ac 1 -ar 16000 "$scratchdir/${file_id}.wav" || fatalerror "Failure calling ffmpeg"
 
