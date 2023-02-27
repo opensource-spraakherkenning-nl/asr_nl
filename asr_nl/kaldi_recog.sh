@@ -56,7 +56,7 @@ for inputfile in "$inputdir"/*; do
   echo "Processing $filename" >&2
  
   extension="${filename##*.}"
-  file_id=$(basename "$inputfile" ."$extension" | sed 's/ /_/g')
+  file_id=$(basename "$inputfile" ."$extension" | sed 's/[^a-zA-Z0-9\.\-]/_/g')
   ffmpeg -i "$inputfile" -sample_fmt s16 -ac 1 -ar 16000 "$scratchdir/${file_id}.wav" || fatalerror "Failure calling ffmpeg"
 
   target_dir="$scratchdir/${file_id}_$(date +"%y_%m_%d_%H_%M_%S_%N")"
