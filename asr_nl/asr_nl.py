@@ -46,7 +46,7 @@ SYSTEM_ID = "asr_nl"
 #System name, the way the system is presented to the world
 SYSTEM_NAME = "Automatic Transcription of Dutch Speech Recordings"
 
-SYSTEM_VERSION = "0.5.7" #also adapt in setup.py and codemeta.json
+SYSTEM_VERSION = "0.5.8" #also adapt in setup.py and codemeta.json
 
 #An informative description for this system (this should be fairly short, about one paragraph, and may not contain HTML)
 SYSTEM_DESCRIPTION = "This webservice uses automatic speech recognition to provide the transcriptions of recordings spoken in Dutch. You can upload and process only one file per project. For bulk processing and other questions, please contact Henk van den Heuvel at h.vandenheuvel@let.ru.nl."
@@ -64,23 +64,6 @@ INTERFACEOPTIONS = "disableliveinput"
 #Load external configuration file
 loadconfig(__name__)
 
-# ======== AUTHENTICATION & SECURITY ===========
-
-#Users and passwords
-
-#set security realm, a required component for hashing passwords (will default to SYSTEM_ID if not set)
-#REALM = SYSTEM_ID
-
-USERS = None #no user authentication/security (this is not recommended for production environments!)
-
-ADMINS = None #List of usernames that are administrator and can access the administrative web-interface (on URL /admin/)
-
-#If you want to enable user-based security, you can define a dictionary
-#of users and (hashed) passwords here. The actual authentication will proceed
-#as HTTP Digest Authentication. Although being a convenient shortcut,
-#using pwhash and plaintext password in this code is not secure!!
-
-#USERS = { user1': '4f8dh8337e2a5a83734b','user2': pwhash('username', REALM, 'secret') }
 
 #Amount of free memory required prior to starting a new process (in MB!), Free Memory + Cached (without swap!). Set to 0 to disable this check (not recommended)
 REQUIREMEMORY = 100

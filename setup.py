@@ -12,7 +12,7 @@ def read(fname):
 
 setup(
     name = "asr_nl",
-    version = "0.5.7", #also adapt in asr_nl.py and codemeta.json
+    version = "0.5.8", #also adapt in asr_nl.py and codemeta.json
     author = "Emre Yilmaz, Maarten van Gompel, Louis ten Bosch",
     author_email = "proycon@anaproy.nl",
     description = ("Automatic Speech Recognition for Dutch - Webservice"),
@@ -33,5 +33,5 @@ setup(
     ],
     package_data = {'asr_nl':['*.sh','*.wsgi','*.yml'] },
     include_package_data=True,
-    install_requires=['CLAM >= 3.1.4']
+    install_requires=['CLAM >= 3.2.5']
 )
