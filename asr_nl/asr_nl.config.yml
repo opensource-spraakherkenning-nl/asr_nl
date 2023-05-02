@@ -20,7 +20,7 @@ resourcedirectory: "/opt/Kaldi_NL/"
 
 # HTTP Basic Authentication via a simple TSV file (disabled by default)
 users_file: "{{CLAM_USERS_FILE}}"
-realm: "{{CLAM_REALM={sys_id}}}"
+realm: "{{CLAM_REALM=asr_nl}}"
 
 #Interface customisation
 customhtml_index: "{{CLAM_CUSTOMHTML_INDEX}}"
