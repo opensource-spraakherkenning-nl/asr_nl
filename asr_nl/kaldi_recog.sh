@@ -53,9 +53,9 @@ fi
 cd "$resourcedir" || fatalerror "Resourcedir not found"
 for inputfile in "$inputdir"/*; do
 
-  echo "Processing $filename" >&2
+  echo "Processing $inputfile" >&2
  
-  extension="${filename##*.}"
+  extension="${inputfile##*.}"
   file_id=$(basename "$inputfile" ."$extension" | sed 's/[^a-zA-Z0-9\.\-]/_/g')
   ffmpeg -i "$inputfile" -sample_fmt s16 -ac 1 -ar 16000 "$scratchdir/${file_id}.wav" || fatalerror "Failure calling ffmpeg"
 
@@ -79,17 +79,15 @@ for inputfile in "$inputdir"/*; do
       fatalerror "Expected CTM file $target_dir/1Best.ctm not found after decoding!"
   fi
 
-  #strip audio extension 
-  out_file_id=$(basename "$file_id" "$extension")
 
   #strip scores
-  cut -d'(' -f 1 "$target_dir/${file_id}.txt" > "$outdir/${out_file_id}.txt"
+  cut -d'(' -f 1 "$target_dir/${file_id}.txt" > "$outdir/${file_id}.txt"
 
-  cp "$target_dir/1Best.ctm" "$outdir/${out_file_id}.ctm"
-  cp "$target_dir/1Best.ctm.spk" "$outdir/${out_file_id}.ctm.spk"
-  cp "$target_dir/${file_id}.xml" "$outdir/${out_file_id}.xml"
-  cp "$target_dir/1Best.rttm" "$outdir/${out_file_id}.rttm"
-  cp "$target_dir/1Best.sent" "$outdir/${out_file_id}.sent"
+  cp "$target_dir/1Best.ctm" "$outdir/${file_id}.ctm"
+  cp "$target_dir/1Best.ctm.spk" "$outdir/${file_id}.ctm.spk"
+  cp "$target_dir/${file_id}.xml" "$outdir/${file_id}.xml"
+  cp "$target_dir/1Best.rttm" "$outdir/${file_id}.rttm"
+  cp "$target_dir/1Best.sent" "$outdir/${file_id}.sent"
 
   #cleanup
   echo "(cleaning intermediate files)">&2
