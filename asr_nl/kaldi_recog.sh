@@ -79,14 +79,17 @@ for inputfile in "$inputdir"/*; do
       fatalerror "Expected CTM file $target_dir/1Best.ctm not found after decoding!"
   fi
 
-  #strip scores
-  cut -d'(' -f 1 "$target_dir/${file_id}.txt" > "$outdir/${file_id}.txt"
+  #strip audio extension 
+  out_file_id=$(basename "$file_id" "$extension")
 
-  cp "$target_dir/1Best.ctm" "$outdir/${file_id}.ctm"
-  cp "$target_dir/1Best.ctm.spk" "$outdir/${file_id}.ctm.spk"
-  cp "$target_dir/${file_id}.xml" "$outdir/${file_id}.xml"
-  cp "$target_dir/1Best.rttm" "$outdir/${file_id}.rttm"
-  cp "$target_dir/1Best.sent" "$outdir/${file_id}.sent"
+  #strip scores
+  cut -d'(' -f 1 "$target_dir/${file_id}.txt" > "$outdir/${out_file_id}.txt"
+
+  cp "$target_dir/1Best.ctm" "$outdir/${out_file_id}.ctm"
+  cp "$target_dir/1Best.ctm.spk" "$outdir/${out_file_id}.ctm.spk"
+  cp "$target_dir/${file_id}.xml" "$outdir/${out_file_id}.xml"
+  cp "$target_dir/1Best.rttm" "$outdir/${out_file_id}.rttm"
+  cp "$target_dir/1Best.sent" "$outdir/${out_file_id}.sent"
 
   #cleanup
   echo "(cleaning intermediate files)">&2
