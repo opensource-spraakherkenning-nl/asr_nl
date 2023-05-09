@@ -30,7 +30,7 @@ ENV CLAM_OAUTH_CLIENT_SECRET=""
 #^-- always keep this private!
 
 # Install all global dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends runit curl ca-certificates nginx uwsgi uwsgi-plugin-python3 python3-pip python3-yaml python3-lxml python3-requests ffmpeg
+RUN apt-get update && apt-get install -y --no-install-recommends runit curl ca-certificates nginx uwsgi uwsgi-plugin-python3 python3-pip python3-yaml python3-lxml python3-requests ffmpeg zip
 
 # Prepare environment
 RUN mkdir -p /etc/service/nginx /etc/service/uwsgi
