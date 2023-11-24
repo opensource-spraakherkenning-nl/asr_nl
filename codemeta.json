@@ -10,7 +10,7 @@
     "@type": "SoftwareSourceCode",
     "identifier": "asr_nl",
     "name": "Automatic Speech Recognition for Dutch",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "description": "This is a web-based automatic speech recogniser for Dutch, capable of transcribing dutch speech recordings using multiple models.",
     "license": "https://spdx.org/licenses/AGPL-3.0-only",
 	"url": "https://github.com/opensource-spraakherkenning-nl/asr_nl",
@@ -89,7 +89,8 @@
 	],
 	"readme": "https://github.com/opensource-spraakherkenning-nl/asr_nl/blob/master/README.md",
 	"issueTracker": "https://github.com/opensource-spraakherkenning-nl/asr_nl/issues",
-	"developmentStatus": "https://www.repostatus.org/#active",
+	"developmentStatus": ["https://www.repostatus.org/#active","https://w3id.org/research-technology-readiness-levels#Level9Proven"],
 	"keywords":  [ "nlp", "speech recognition", "dutch" ],
+    "applicationCategory": ["https://vocabs.dariah.eu/tadirah/speechRecognizing","https://w3id.org/nwo-research-fields#SoftwareForHumanities"],
 	"dateCreated": "2017-04-02"
 }
